@@ -5,7 +5,6 @@ import {
   Rubik_400Regular,
   Rubik_600SemiBold,
 } from "@expo-google-fonts/rubik";
-import Loader from './src/components/Loader/Loader';
 
 
 export default function App() {
@@ -21,7 +20,6 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Loader size={"2x"} />
     </View>
   );
 }

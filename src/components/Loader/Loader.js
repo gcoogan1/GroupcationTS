@@ -10,9 +10,8 @@ import DoubleXLEllipse from "../../../assets/loader/DoubleXLEllipse.svg";
 /**
  * This component renders a loading spinner based on size (defaults to a md size).
  * @param {string} size optional -> sm, lg, xl, 2x
- * @returns {ReactNode} A React element that renders a loader.
+ * @returns {ReactNode} Renders a loader.
  */
-
 const Loader = ({ size }) => {
   const spinValue = useRef(new Animated.Value(0)).current;
 
