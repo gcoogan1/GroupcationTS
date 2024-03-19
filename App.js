@@ -5,6 +5,7 @@ import {
   Rubik_400Regular,
   Rubik_600SemiBold,
 } from "@expo-google-fonts/rubik";
+import Button from './src/components/Button/Button';
 
 import Icon from './src/components/Icon/Icon';
 import Pictogram from './src/components/Pictogram/Pictogram'
@@ -24,9 +25,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Pictogram size={"2x"}>
-        <Destinations color="blue" />
-      </Pictogram>
+      <View style={styles.buttonContainer}>
+      <Button isLoading={true}>Label</Button>
+      </View>
     </View>
   );
 }
@@ -36,5 +37,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  buttonContainer: {
+    width: 118,
+    height: 52
   }
 });

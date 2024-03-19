@@ -173,54 +173,54 @@ const semanticFonts = {
   display: {
     md: {
       ...primitiveFonts.bold,
-      fontSize: "40px",
-      lineHeight: "48px",
+      fontSize: 40,
+      // lineHeight: 48,
     },
   },
   title: {
     sm: {
       ...primitiveFonts.bold,
-      fontSize: "18px",
-      lineHeight: "24px"
+      fontSize: 18,
+      // lineHeight: 24
     },
     md: {
       ...primitiveFonts.bold,
-      fontSize: "22px",
-      lineHeight: "28px",
+      fontSize: 22,
+      // lineHeight: 28,
     },
     lg: {
       ...primitiveFonts.bold,
-      fontSize: "30px",
-      lineHeight: "36px"
+      fontSize: 30,
+      // lineHeight: 36
     },
   },
   body: {
     sm: {
       ...primitiveFonts.regular,
-      fontSize: "12px",
-      lineHeight: "16px"
+      fontSize: 12,
+      // lineHeight: 16
     },
     smBold: {
       ...primitiveFonts.bold,
-      fontSize: "12px",
-      lineHeight: "16px"
+      fontSize: 12,
+      // lineHeight: 16
     },
     md: {
       ...primitiveFonts.regular,
-      fontSize: "14px",
-      lineHeight: "20px"
+      fontSize: 14,
+      // lineHeight: 20
     },
     mdBold: {
       ...primitiveFonts.bold,
-      fontSize: "14px",
-      lineHeight: "20px"
+      fontSize: 14,
+      // lineHeight: 20
     },
   },
   link: {
     sm: {
       ...primitiveFonts.bold,
-      fontSize: "12px",
-      lineHeight: "16px",
+      fontSize: 12,
+      // lineHeight: 16,
       textDecoration: primitiveFonts.decoration,
     },
   },
@@ -230,36 +230,36 @@ const semanticFonts = {
 const semanticBorder = {
   width: {
     md: {
-      borderWidth: "1px",
+      borderWidth: 1,
     },
     lg: {
-      borderWidth: "2px",
+      borderWidth: 2,
     },
   },
   radius: {
     sm: {
-      borderRadius: "4px",
+      borderRadius: 4,
     },
     md: {
-      borderRadius: "9px",
+      borderRadius: 9,
     },
     lg: {
-      borderRadius: "12px",
+      borderRadius: 12,
     },
     full: {
-      borderRadius: "999px",
+      borderRadius: 999,
     },
   },
 };
 
 // Spacing values
 const semanticSpacing = {
-  '2xs': '2px',
-  xs: '4px',
-  sm: '8px',
-  md: '16px',
-  lg: '32px',
-  xl: '64px'
+  '2xs': 2,
+  xs: 4,
+  sm: 8,
+  md: 16,
+  lg: 32,
+  xl: 64
 }
 
 // Opacity full CSS style
