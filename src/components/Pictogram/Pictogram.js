@@ -1,11 +1,12 @@
 import { View } from "react-native";
 
 /**
- * This component renders a pictogram based on size (defaults to a md size) and child (img) passed.
- * @param {image} children required -> image to be displayed -> CHILD MUST HAVE WIDTH & HEIGHT SET TO 100%
- * SVG ex. <Close width={'100%} height={'100%'} />
- * @param {string} size optional -> sm, lg, xl, 2x
+ * This component renders a pictogram based on size (defaults to a md size) and child (svg) passed.
+ * @prop {image} children required -> svg to be displayed
+ * @prop {string} size optional -> sm, lg, xl, 2x
  * @returns {ReactNode} Renders a pictogram.
+ * 
+ * @example <Pictogram size="lg"> <User /> </Pictogram>
  */
 const Pictogram = ({ size, children }) => {
   const getPictogramSize = () => {
