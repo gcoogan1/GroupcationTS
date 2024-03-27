@@ -6,13 +6,15 @@ import MdEllipse from "../../../assets/loader/MdEllipse.svg";
 import LgEllipse from "../../../assets/loader/LgEllipse.svg";
 import XLEllipse from "../../../assets/loader/XLEllipse.svg";
 import DoubleXLEllipse from "../../../assets/loader/DoubleXLEllipse.svg";
+import { theme } from "../../styles/theme";
 
 /**
  * This component renders a loading spinner based on size (defaults to a md size).
  * @param {string} size optional -> sm, lg, xl, 2x
+ * @param {string} color optional -> changes color of loader
  * @returns {ReactNode} Renders a loader.
  */
-const Loader = ({ size }) => {
+const Loader = ({ size, color }) => {
   const spinValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -32,12 +34,13 @@ const Loader = ({ size }) => {
   });
 
   const LoaderImage = () => {
+    const loaderColor = color ? color : theme.color.surface.onBasePrimary
     const loaderSize = {
-      sm: <SmEllipse />,
-      lg: <LgEllipse />,
-      xl: <XLEllipse />,
-      "2x": <DoubleXLEllipse />,
-      default: <MdEllipse />,
+      sm: <SmEllipse fill={loaderColor}  />,
+      lg: <LgEllipse fill={loaderColor}  />,
+      xl: <XLEllipse fill={loaderColor}  />,
+      "2x": <DoubleXLEllipse fill={loaderColor}  />,
+      default: <MdEllipse fill={loaderColor} />,
     };
 
     return loaderSize[size] || loaderSize.default;
@@ -45,6 +48,7 @@ const Loader = ({ size }) => {
 
   return (
     <Animated.View style={{ transform: [{ rotate: spin }] }}>
+      {/* <Spinner color="white" /> */}
       <LoaderImage />
     </Animated.View>
   );
