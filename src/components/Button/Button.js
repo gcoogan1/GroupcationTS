@@ -1,23 +1,36 @@
 import { Pressable, Text } from "react-native";
 
-import { defaultButtonStyles } from "./Button.styles";
-import Loader from '../Loader/Loader';
-import { theme } from "../../styles/theme";
+import { defaultButtonStyles } from "./style/Button.styles";
+import Loader from "../Loader/Loader";
+import { getButtonStyle, getTextStyle, getDisplayIcon } from "./util/util";
 
-const Button = ({ children, onPress, isDisabled, isLoading }) => {
+const Button = ({
+  children,
+  onPress,
+  buttonType,
+  buttonSize,
+  isDisabled,
+  isLoading,
+  iconRight,
+  iconLeft,
+}) => {
+
+  const textStyle = getTextStyle(buttonType, isDisabled)
+
   return (
     <Pressable
       style={({ pressed, focused }) => [
         defaultButtonStyles.button,
-        pressed && defaultButtonStyles.pressed,
+        getButtonStyle(buttonType, buttonSize, pressed, isDisabled),
         focused && defaultButtonStyles.focused,
-        isDisabled && defaultButtonStyles.disabled
       ]}
       disabled={isDisabled}
       onPress={onPress}
     >
-      {isLoading && <Loader color={theme.color.primary.onBase} />}
-      <Text style={defaultButtonStyles.text}>{children}</Text>
+      {getDisplayIcon(iconRight, isLoading)}
+      {isLoading && <Loader color={textStyle.color} />}
+      <Text style={[textStyle, defaultButtonStyles.text]}>{children}</Text>
+      {getDisplayIcon(iconLeft, isLoading)}
     </Pressable>
   );
 };
