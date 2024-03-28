@@ -11,6 +11,7 @@ import Icon from "./src/components/Icon/Icon";
 import Pictogram from "./src/components/Pictogram/Pictogram";
 import Add from "./assets/icons/Add.svg";
 import { theme } from "./src/styles/theme";
+import Progress from "./src/components/ProgessBar/ProgressBar";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -25,18 +26,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={styles.buttonContainer}>
-        <Button
-          // isLoading={true}
-          buttonSize={'md'}
-          // isDisabled={true}
-          buttonType={'default-inverse'}
-          // iconRight={<Add color={theme.color.surface.onBasePrimary} />}
-          // iconLeft={<Add color={theme.color.surface.onBasePrimary} />}
-        >
-          Label
-        </Button>
-      </View>
+      <Progress step={.20} />
     </View>
   );
 }
@@ -46,9 +36,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-  },
-  buttonContainer: {
-    width: 118,
-    height: 52
-  },
+  }
 });
