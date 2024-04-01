@@ -12,6 +12,7 @@ import Pictogram from "./src/components/Pictogram/Pictogram";
 import Add from "./assets/icons/Add.svg";
 import { theme } from "./src/styles/theme";
 import Progress from "./src/components/ProgessBar/ProgressBar";
+import InlineButton from "./src/components/InlineButton/InlineButton";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -26,7 +27,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Progress step={.20} />
+      <View style={styles.btn}>
+        <InlineButton   buttonType={"secondary"}>Hello</InlineButton>
+      </View>
     </View>
   );
 }
@@ -36,5 +39,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  btn: {
+    width: 112,
+    height: 30
   }
 });
