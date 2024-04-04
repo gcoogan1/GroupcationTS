@@ -7,7 +7,7 @@ import { theme } from "../../styles/theme";
 /**
  * This component renders an avatar with either a image or initials. If no props are passed
  * the default will be a md avatar with the initials AZ.
- * @prop {image} avatarImage optional -> users image (png) to be displayed
+ * @prop {image} avatarImage optional -> users image (link) to be displayed. Must have uri format.
  * @prop {string} size optional -> sm, md, lg, xl, 2x (defaults to md)
  * @prop {string} initials optional -> users initials (limit to two characters)
  * @prop {string} numOfUsers optional -> displays the number of students left
@@ -15,7 +15,7 @@ import { theme } from "../../styles/theme";
  *
  * @note Image takes precedence over initials. So if an image if given, the image will appear instead of initials.
  * @note NumOfUsers should only be sizes sm or md (defaults to md)
- * @example <Avatar avatarImage={require('./assets/imagery/DefaultAvatar.png')} size="2xl" />
+ * @example <Avatar avatarImage={{ uri: 'https:link/to/image.com' }} size="2xl" />
  */
 const Avatar = ({ avatarImage, size, initials, numOfUsers }) => {
   const formatedInitials = !!initials
@@ -24,7 +24,7 @@ const Avatar = ({ avatarImage, size, initials, numOfUsers }) => {
 
   return (
     <>
-      {!!avatarImage ? (
+      {!!avatarImage.uri  ? (
         <Image
           source={avatarImage}
           style={[
