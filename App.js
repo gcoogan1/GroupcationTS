@@ -15,6 +15,7 @@ import Progress from "./src/components/ProgessBar/ProgressBar";
 import InlineButton from "./src/components/InlineButton/InlineButton";
 import ActionButtons from "./src/components/ActionButtons/ActionButtons";
 import EmptyState from "./src/components/EmptyState/EmptyState";
+import Avatar from "./src/components/Avatar/Avatar";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -30,7 +31,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <EmptyState text={'Empty state text'} onPress={() => console.log("click")} label={'label'} />
+      <Avatar avatarImage={require('./assets/imagery/DefaultAvatar.png')} size="2xl" initials={'gc'} />
     </View>
   );
 }
