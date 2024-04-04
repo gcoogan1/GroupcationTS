@@ -12,11 +12,14 @@ export const avatarStyles = StyleSheet.create({
     ...theme.border.radius.full,
     ...theme.border.width.lg,
     borderColor: theme.color.surface.base,
-    backgroundColor: theme.color.primary.tonal,
     alignItems: 'center',
     justifyContent: 'center'
   },
   text: {
     color: theme.color.primary.base,
+  },
+  numText: {
+    ...theme.typeography.body.smBold,
+    color: theme.color.surface.onBaseSecondary,
   }
 })

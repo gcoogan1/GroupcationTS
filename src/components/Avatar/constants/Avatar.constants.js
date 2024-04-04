@@ -1,25 +1,26 @@
 import { theme } from "../../../styles/theme"
 
+// Added 2 to each to account for border
 const AVATAR_SIZES_STYLE = {
   sm: {
-    width: 32,
-    height: 32
+    width: 34,
+    height: 34
   },
   md: {
-    width: 48,
-    height: 48
+    width: 50,
+    height: 50
   },
   lg: {
-    width: 64,
-    height: 64
+    width: 66,
+    height: 66
   },
   xl: {
-    width: 80,
-    height: 80
+    width: 82,
+    height: 82
   },
   '2xl': {
-    width: 96,
-    height: 96
+    width: 98,
+    height: 98
   }
 }
 
