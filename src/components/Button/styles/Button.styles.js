@@ -5,8 +5,8 @@ export const defaultButtonStyles = StyleSheet.create({
   button: {
     ...theme.border.radius.md,
     ...theme.border.width.lg,
-    width: '100%',
-    height: '100%',
+    // width: '100%',
+    // height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',

@@ -4,6 +4,20 @@ import Icon from "../Icon/Icon";
 import { theme } from "../../styles/theme";
 import { defaultInlineStyles } from "./styles/InlineButton.styles";
 
+/**
+ * This component renders a button based on type and size.
+ * @important -> Needs a View wrapping the button to set width/height
+ * 
+ * @param {string} children required -> label of button
+ * @param {function} onPress required -> onClick event for button
+ * @param {string} buttonType optional -> primary, secondary (defaults to the primary type)
+ * @param {boolean} isDisabled optional -> sets disabled state of button
+ * @param {svg} iconRight optional -> displays icon (set color in icon element) to the right of text
+ * @param {svg} iconLeft optional -> displays icon (set color in icon element) to the left of text
+ * @returns {ReactElement} Renders a button.
+ * 
+ * @example  <InlineButton buttonType={"secondary"}>Click me</InlineButton>
+ */
 const InlineButton = ({
   children,
   onPress,

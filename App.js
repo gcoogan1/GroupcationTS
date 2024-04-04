@@ -13,6 +13,7 @@ import Add from "./assets/icons/Add.svg";
 import { theme } from "./src/styles/theme";
 import Progress from "./src/components/ProgessBar/ProgressBar";
 import InlineButton from "./src/components/InlineButton/InlineButton";
+import ActionButtons from "./src/components/ActionButtons/ActionButtons";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -24,12 +25,41 @@ export default function App() {
     return null;
   }
 
+  const actionButtons = {
+    vertical: {
+      top: {
+        label: 'Top',
+        onPress: () => console.log("TOP")
+      },
+      middle: {
+        label: 'Label Middle',
+        onPress: () => console.log("MIDDLE")
+      },
+      bottom: {
+        label: 'Label Bottom',
+        onPress: () => console.log("BOTTOM")
+      },
+    },
+    horizontal: {
+      left: {
+        label: 'Left',
+        onPress: () => console.log("LEFT")
+      },
+      right: {
+        label: 'Right',
+        onPress: () => console.log("RIGHt")
+      }
+    }
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={styles.btn}>
-        <InlineButton   buttonType={"secondary"}>Hello</InlineButton>
-      </View>
+      <ActionButtons
+        layoutStyle="vertical"
+        buttonsGroup={actionButtons}
+        progressStep={.30}
+      />
     </View>
   );
 }
