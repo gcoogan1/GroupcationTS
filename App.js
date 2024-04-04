@@ -14,6 +14,7 @@ import { theme } from "./src/styles/theme";
 import Progress from "./src/components/ProgessBar/ProgressBar";
 import InlineButton from "./src/components/InlineButton/InlineButton";
 import ActionButtons from "./src/components/ActionButtons/ActionButtons";
+import EmptyState from "./src/components/EmptyState/EmptyState";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -25,41 +26,11 @@ export default function App() {
     return null;
   }
 
-  const actionButtons = {
-    vertical: {
-      top: {
-        label: 'Top',
-        onPress: () => console.log("TOP")
-      },
-      middle: {
-        label: 'Label Middle',
-        onPress: () => console.log("MIDDLE")
-      },
-      bottom: {
-        label: 'Label Bottom',
-        onPress: () => console.log("BOTTOM")
-      },
-    },
-    horizontal: {
-      left: {
-        label: 'Left',
-        onPress: () => console.log("LEFT")
-      },
-      right: {
-        label: 'Right',
-        onPress: () => console.log("RIGHt")
-      }
-    }
-  }
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <ActionButtons
-        layoutStyle="vertical"
-        buttonsGroup={actionButtons}
-        progressStep={.30}
-      />
+      <EmptyState text={'Empty state text'} onPress={() => console.log("click")} label={'label'} />
     </View>
   );
 }

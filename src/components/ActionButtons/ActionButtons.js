@@ -3,7 +3,6 @@ import { View } from "react-native";
 import Button from "../Button/Button";
 import {
   retrieveButtonPropertiesFromGroup,
-  verifyButtonProperties,
 } from "./util/util";
 import Progress from "../ProgessBar/ProgressBar";
 import Loader from "../Loader/Loader";

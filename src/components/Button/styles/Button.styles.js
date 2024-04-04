@@ -16,7 +16,6 @@ export const defaultButtonStyles = StyleSheet.create({
     borderColor: theme.color.focus.line
   },
   text: {
-    ...theme.typeography.body.mdBold,
-    fontSize: 14
+    ...theme.typeography.body.mdBold
   }
 })
