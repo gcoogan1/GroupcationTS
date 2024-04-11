@@ -18,6 +18,7 @@ import EmptyState from "./src/components/EmptyState/EmptyState";
 import Avatar from "./src/components/Avatar/Avatar";
 import AvatarStack from "./src/components/AvatarStack/AvatarStack";
 import FavoriteToggle from "./src/components/FavoriteToggle/FavoriteToggle";
+import Checkbox from "./src/components/Checkbox/Checkbox";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -32,7 +33,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <FavoriteToggle />
+      <Checkbox label={'Checkbox-label'} subLabel={'sub-label'} hasBackground={true} />
     </View>
   );
 }
