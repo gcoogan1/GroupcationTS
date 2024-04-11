@@ -9,6 +9,7 @@ import Button from "./src/components/Button/Button";
 
 import Icon from "./src/components/Icon/Icon";
 import Pictogram from "./src/components/Pictogram/Pictogram";
+import Placeholder from "./assets/icons/Placeholder.svg"
 import Add from "./assets/icons/Add.svg";
 import { theme } from "./src/styles/theme";
 import Progress from "./src/components/ProgessBar/ProgressBar";
@@ -19,6 +20,7 @@ import Avatar from "./src/components/Avatar/Avatar";
 import AvatarStack from "./src/components/AvatarStack/AvatarStack";
 import FavoriteToggle from "./src/components/FavoriteToggle/FavoriteToggle";
 import Checkbox from "./src/components/Checkbox/Checkbox";
+import RowItem from "./src/components/Rows/RowItem/RowItem";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -33,7 +35,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Checkbox label={'Checkbox-label'} subLabel={'sub-label'} hasBackground={true} />
+      <RowItem label={'label'} subLabel={'sub-label'} icon={<Placeholder color="black" />} />
     </View>
   );
 }

@@ -49,7 +49,7 @@ const Checkbox = ({
       accessibilityLabel={`${label} checkbox`}
       accessibilityState={{ checked: isSelected }}
     >
-      <View>
+      <View style={checkboxStyles.iconContainer}>
         <Icon>
           {!isSelected ? (
             <CheckboxUnselected color={theme.color.surface.onBasePrimary} />

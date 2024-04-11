@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
-import { theme } from "../../../styles/theme";
+import { theme } from "../../../../styles/theme";
 
-export const checkboxStyles = StyleSheet.create({
+export const rowItemStyles = StyleSheet.create({
   container: {
     width: 300,
     flexDirection: 'row',
@@ -11,7 +11,7 @@ export const checkboxStyles = StyleSheet.create({
     minWidth: 20
   },
   labelContainer: {
-    paddingVertical: 2
+    gap: theme.spacing["2xs"]
   },
   label: {
     ...theme.typeography.body.mdBold,
