@@ -8,7 +8,7 @@ import { theme } from "../../styles/theme";
  * This component renders a stack of avatars based on the numbers of users given.
  * @prop {array of objects} string required -> users (avatars) to in a group
  * @prop {string} size optional -> sm, md (defaults to 'md')
- * @prop {function} avatarsOnPress required -> clickable event for avatar stack
+ * @prop {function} avatarsOnPress optional -> clickable event for avatar stack
  * @returns {ReactElement} Renders an avatar.
  *
  * @note Only up to 4 users (avatars) cann be displayed. If more then 4, 3 users (avatars) will be displayed with
@@ -31,15 +31,15 @@ import { theme } from "../../styles/theme";
 const AvatarStack = ({ users, size, avatarsOnPress }) => {
   const greaterThanFive = users.length >= 5;
 
-  const displayedUsers = greaterThanFive && users.slice(0, 3);
+  const displayedUsers = greaterThanFive && users.slice(0, 2);
   const remainingUsers = users.length - displayedUsers.length;
 
   return (
     <Pressable
       style={({ pressed, focused }) => [
         [avatarStackStyles.container],
-        pressed && { borderColor: theme.color.surface.onBasePrimary },
-        focused && { borderColor: theme.color.focus.line }
+        (pressed && !!avatarsOnPress) && { borderColor: theme.color.surface.onBasePrimary },
+        (focused && !!avatarsOnPress) && { borderColor: theme.color.focus.line }
       ]}
       onPress={avatarsOnPress}
     >

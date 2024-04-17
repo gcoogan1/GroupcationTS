@@ -9,7 +9,7 @@ import Button from "./src/components/Button/Button";
 
 import Icon from "./src/components/Icon/Icon";
 import Pictogram from "./src/components/Pictogram/Pictogram";
-import Placeholder from "./assets/icons/Placeholder.svg"
+import Placeholder from "./assets/icons/Placeholder.svg";
 import Add from "./assets/icons/Add.svg";
 import { theme } from "./src/styles/theme";
 import Progress from "./src/components/ProgessBar/ProgressBar";
@@ -21,6 +21,7 @@ import AvatarStack from "./src/components/AvatarStack/AvatarStack";
 import FavoriteToggle from "./src/components/FavoriteToggle/FavoriteToggle";
 import Checkbox from "./src/components/Checkbox/Checkbox";
 import RowItem from "./src/components/Rows/RowItem/RowItem";
+import RowItemLink from "./src/components/Rows/RowItemLink/RowItemLink";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -32,10 +33,50 @@ export default function App() {
     return null;
   }
 
+  const users = [
+    {
+      // image: 'https://i.pinimg.com/564x/d3/05/d6/d305d6b4957713e981c43d381c12b862.jpg',
+      initials: 'gc',
+      userId: '123'
+    },
+    // {
+    //   image: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png',
+    //   initials: 'hb',
+    //   userId: '456'
+    // },
+    // {
+    //   image: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png',
+    //   initials: 'hb',
+    //   userId: '456'
+    // },
+    // {
+    //   image: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png',
+    //   initials: 'hb',
+    //   userId: '456'
+    // },
+    // {
+    //   image: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png',
+    //   initials: 'hb',
+    //   userId: '456'
+    // },
+  ]
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <RowItem label={'label'} subLabel={'sub-label'} icon={<Placeholder color="black" />} />
+      <RowItemLink
+        type={'message'}
+        label={"total cost"}
+        subLabel={"User Name on 15 June 2999"}
+        // user={<Avatar avatarImage={{ uri: 'https:link/to/image.com' }} />}
+        count={20}
+        time="12/30/2023"
+        // showChevron
+        showDivider
+        isDisabled
+        icon={<Placeholder color="black" />}
+        avatars={<AvatarStack users={users}  />}
+      />
     </View>
   );
 }
@@ -48,6 +89,6 @@ const styles = StyleSheet.create({
   },
   btn: {
     width: 112,
-    height: 30
-  }
+    height: 30,
+  },
 });

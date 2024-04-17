@@ -14,26 +14,21 @@ import { capitilaizeFirstLetter } from "../../../../util/helperFunctions/helperF
  * @example
  * <RowItem label={'label'} subLabel={'sub-label'} icon={<Placeholder color="black" />} />
  */
-const RowItem = ({
-  icon,
-  label,
-  subLabel
-}) => {
-
+const RowItem = ({ icon, label, subLabel }) => {
   return (
-      <View style={rowItemStyles.container}>
-        <View style={rowItemStyles.iconContainer}>
-          {!!icon && <Icon>{icon}</Icon>}
-        </View>
+    <View style={rowItemStyles.container}>
+      <View style={rowItemStyles.iconContainer}>
+        {!!icon && <Icon>{icon}</Icon>}
+      </View>
       <View style={rowItemStyles.labelContainer}>
-        <Text style={rowItemStyles.label}>
+        <Text numberOfLines={1} style={rowItemStyles.label}>
           {capitilaizeFirstLetter(label)}
         </Text>
-        <Text style={rowItemStyles.subLabel}>
+        <Text numberOfLines={1} style={rowItemStyles.subLabel}>
           {capitilaizeFirstLetter(subLabel)}
         </Text>
       </View>
-      </View>
+    </View>
   );
 };
 
