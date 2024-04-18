@@ -22,6 +22,7 @@ import FavoriteToggle from "./src/components/FavoriteToggle/FavoriteToggle";
 import Checkbox from "./src/components/Checkbox/Checkbox";
 import RowItem from "./src/components/Rows/RowItem/RowItem";
 import RowItemLink from "./src/components/Rows/RowItemLink/RowItemLink";
+import RowList from "./src/components/Rows/RowList/RowList";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -64,7 +65,12 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <RowItemLink
+      <RowList>
+        <RowItem label={'label'} subLabel={'sub-label'} icon={<Placeholder color="black" />} />
+        <RowItem label={'label'} subLabel={'sub-label'} icon={<Placeholder color="black" />} />
+        <RowItem label={'label'} subLabel={'sub-label'} icon={<Placeholder color="black" />} />
+      </RowList>
+      {/* <RowItemLink
         type={'message'}
         label={"total cost"}
         subLabel={"User Name on 15 June 2999"}
@@ -76,7 +82,7 @@ export default function App() {
         isDisabled
         icon={<Placeholder color="black" />}
         avatars={<AvatarStack users={users}  />}
-      />
+      /> */}
     </View>
   );
 }
