@@ -6,6 +6,7 @@ import {
   Rubik_600SemiBold,
 } from "@expo-google-fonts/rubik";
 import Button from "./src/components/Button/Button";
+import { useState } from "react";
 
 import Icon from "./src/components/Icon/Icon";
 import Pictogram from "./src/components/Pictogram/Pictogram";
@@ -23,8 +24,10 @@ import Checkbox from "./src/components/Checkbox/Checkbox";
 import RowItem from "./src/components/Rows/RowItem/RowItem";
 import RowItemLink from "./src/components/Rows/RowItemLink/RowItemLink";
 import RowList from "./src/components/Rows/RowList/RowList";
+import DatePicker from "./src/components/DatePicker/DatePicker";
 
 export default function App() {
+  const [openDayPicker, setOpenDayPicker] = useState(false)
   let [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_600SemiBold,
@@ -65,24 +68,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <RowList>
-        <RowItem label={'label'} subLabel={'sub-label'} icon={<Placeholder color="black" />} />
-        <RowItem label={'label'} subLabel={'sub-label'} icon={<Placeholder color="black" />} />
-        <RowItem label={'label'} subLabel={'sub-label'} icon={<Placeholder color="black" />} />
-      </RowList>
-      {/* <RowItemLink
-        type={'message'}
-        label={"total cost"}
-        subLabel={"User Name on 15 June 2999"}
-        // user={<Avatar avatarImage={{ uri: 'https:link/to/image.com' }} />}
-        count={20}
-        time="12/30/2023"
-        // showChevron
-        showDivider
-        isDisabled
-        icon={<Placeholder color="black" />}
-        avatars={<AvatarStack users={users}  />}
-      /> */}
+      <Button onPress={() => setOpenDayPicker(!openDayPicker)}>Press me</Button>
+      {!!openDayPicker && (
+        <DatePicker isRange initialStartDate={'2024-04-09'} initialEndDate={'2024-04-11'} onDatePress={() => console.log("here")} />
+      )}
     </View>
   );
 }
