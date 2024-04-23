@@ -25,6 +25,7 @@ import RowItem from "./src/components/Rows/RowItem/RowItem";
 import RowItemLink from "./src/components/Rows/RowItemLink/RowItemLink";
 import RowList from "./src/components/Rows/RowList/RowList";
 import DatePicker from "./src/components/DatePicker/DatePicker";
+import TimePicker from "./src/components/TimePicker/TimePicker";
 
 export default function App() {
   const [openDayPicker, setOpenDayPicker] = useState(false)
@@ -69,9 +70,10 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Button onPress={() => setOpenDayPicker(!openDayPicker)}>Press me</Button>
-      {!!openDayPicker && (
+      {/* {!!openDayPicker && (
         <DatePicker isRange initialStartDate={'2024-04-09'} initialEndDate={'2024-04-11'} onDatePress={() => console.log("here")} />
-      )}
+      )} */}
+      <TimePicker initialTime={'2024-04-23T08:43:00.000Z'} onTimeChange={() => console.log("hello")} />
     </View>
   );
 }
