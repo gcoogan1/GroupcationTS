@@ -7,6 +7,7 @@ import {
 } from "@expo-google-fonts/rubik";
 import Button from "./src/components/Button/Button";
 import { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
 
 import Icon from "./src/components/Icon/Icon";
 import Pictogram from "./src/components/Pictogram/Pictogram";
@@ -26,6 +27,9 @@ import RowItemLink from "./src/components/Rows/RowItemLink/RowItemLink";
 import RowList from "./src/components/Rows/RowList/RowList";
 import DatePicker from "./src/components/DatePicker/DatePicker";
 import TimePicker from "./src/components/TimePicker/TimePicker";
+import TabMenu from "./src/components/TabMenu/TabMenu";
+import TestScreen from "./src/screens/TestScreen";
+import TestSecondScreen from "./src/screens/TestSecondScreen";
 
 export default function App() {
   const [openDayPicker, setOpenDayPicker] = useState(false)
@@ -66,14 +70,17 @@ export default function App() {
     // },
   ]
 
+  const screens = [
+    {name: 'test', component: TestScreen},
+    {name: 'tes link', component: TestSecondScreen}
+  ]
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Button onPress={() => setOpenDayPicker(!openDayPicker)}>Press me</Button>
-      {/* {!!openDayPicker && (
-        <DatePicker isRange initialStartDate={'2024-04-09'} initialEndDate={'2024-04-11'} onDatePress={() => console.log("here")} />
-      )} */}
-      <TimePicker initialTime={'2024-04-23T08:43:00.000Z'} onTimeChange={() => console.log("hello")} />
+      <NavigationContainer>
+        <TabMenu tabScreens={screens} />
+      </NavigationContainer>
     </View>
   );
 }
@@ -81,8 +88,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    marginTop: 30
   },
   btn: {
     width: 112,
