@@ -21,9 +21,14 @@ import { getButtonStyle, getTextStyle, getDisplayIcon } from "./util/util";
  * @returns {ReactElement} Renders a button.
  * 
  * @example   
- * <Button buttonSize={'sm'} buttonType={'default-inverse'} iconRight={<Add color={theme.color.surface />}>
-      Click me
-    </Button>
+ * <Button 
+ *  buttonSize={'sm'} 
+ *  onPress={() => console.log("Pressed!")} 
+ *  buttonType={'default-inverse'} 
+ *  iconRight={<Add color={theme.color.surface />}
+ * >
+ *  Click me
+ * </Button>
  */
 
 const Button = ({
@@ -35,15 +40,14 @@ const Button = ({
   isLoading,
   iconRight,
   iconLeft,
-  styles
+  styles,
 }) => {
-
-  const textStyle = getTextStyle(buttonType, isDisabled)
+  const textStyle = getTextStyle(buttonType, isDisabled);
 
   return (
     <Pressable
       style={({ pressed, focused }) => [
-        {...styles},
+        { ...styles },
         defaultButtonStyles.button,
         getButtonStyle(buttonType, buttonSize, pressed, isDisabled),
         focused && defaultButtonStyles.focused,

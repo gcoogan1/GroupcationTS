@@ -9,7 +9,7 @@ import { capitilaizeFirstLetter } from "../../../util/helperFunctions/helperFunc
  * This component renders a tag specified by the tagType passed.
  * @prop {string} tagType required -> type of tag to display (see below). 
  * MUST be one of the following (strings): Favorited, Traveler, Creator, Following, Member, Admin
- * @prop {booleen} small optional -> if true, sets tag to small size
+ * @prop {booleen} small optional -> if true, sets tag to small size (defaults to md size)
  * @returns {ReactElement} Renders a tag.
  *
  * @example
