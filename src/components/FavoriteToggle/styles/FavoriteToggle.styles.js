@@ -6,6 +6,8 @@ export const favoriteToggleStyles = StyleSheet.create({
   filledContainer: {
     ...theme.border.radius.full,
     padding: theme.spacing.md,
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: theme.color.primary.base
   },
   filledPressed: {
@@ -18,7 +20,10 @@ export const favoriteToggleStyles = StyleSheet.create({
   },
   outlinedContainer: {
     ...theme.border.radius.md,
-    padding: theme.spacing.md
+    padding: theme.spacing.md,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: theme.color.surface.base
   },
   outlinedPressed: {
     ...theme.border.width.lg,

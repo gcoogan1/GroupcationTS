@@ -47,9 +47,9 @@ const Button = ({
   return (
     <Pressable
       style={({ pressed, focused }) => [
-        { ...styles },
         defaultButtonStyles.button,
         getButtonStyle(buttonType, buttonSize, pressed, isDisabled),
+        { ...styles },
         focused && defaultButtonStyles.focused,
       ]}
       disabled={isDisabled}

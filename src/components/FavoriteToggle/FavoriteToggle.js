@@ -7,13 +7,12 @@ import FavoriteOutlined from "../../../assets/icons/Favorite_Outlined.svg";
 import FavoriteFilled from "../../../assets/icons/Favorite_Filled.svg";
 import { favoriteToggleStyles } from "./styles/FavoriteToggle.styles";
 
-
 /**
  * This component renders a toggle that allows a user to select a favorite.
  * @prop {string} size optional -> sm, md (defaults to 'md')
  * @returns {ReactElement} Renders a favorites toggle.
  *
- * @example 
+ * @example
  * <FavoriteToggle size="sm" />
  */
 const FavoriteToggle = ({ size }) => {
@@ -31,8 +30,12 @@ const FavoriteToggle = ({ size }) => {
           style={({ pressed, focused }) => [
             pressed && favoriteToggleStyles.filledPressed,
             focused && favoriteToggleStyles.filledFocus,
-            (size === 'sm') && { padding: theme.spacing.sm},
-            favoriteToggleStyles.filledContainer
+            size === "sm" && {
+              padding: theme.spacing.sm,
+              width: 32,
+              height: 32
+            },
+            favoriteToggleStyles.filledContainer,
           ]}
         >
           <Icon size={size}>
@@ -45,8 +48,12 @@ const FavoriteToggle = ({ size }) => {
           style={({ pressed, focused }) => [
             pressed && favoriteToggleStyles.outlinedPressed,
             focused && favoriteToggleStyles.outlinedFocus,
-            (size === 'sm') && { padding: theme.spacing.sm},
-            favoriteToggleStyles.outlinedContainer
+            size === "sm" && {
+              padding: theme.spacing.sm,
+              width: 32,
+              height: 32
+            },
+            favoriteToggleStyles.outlinedContainer,
           ]}
         >
           <Icon size={size}>
