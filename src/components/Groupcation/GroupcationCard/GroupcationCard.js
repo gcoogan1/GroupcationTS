@@ -14,7 +14,7 @@ import { groupcationCardStyles } from "./styles/GroupcationCard.styles";
  * @prop {string} groupcationDates required -> groupcation dates
  * @prop {function} onPressCard required -> event to be fired when a card is clicked, 
  * MUST contain logic to navigate to the groupcation
- * @prop {string} cardImage required -> the background image of card
+ * @prop {string} cardImage required -> the background image of card, MUST be a URL
  * @returns {ReactElement} Renders a groupcation card.
  *
  * @example

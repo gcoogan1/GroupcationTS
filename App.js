@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 import {
   useFonts,
   Rubik_400Regular,
@@ -11,6 +11,8 @@ import Button from "./src/components/Button/Button";
 import AvatarStack from "./src/components/AvatarStack/AvatarStack";
 import Placeholder from "./assets/icons/Placeholder.svg";
 import GroupcationCard from "./src/components/Groupcation/GroupcationCard/GroupcationCard";
+import GroupcationImage from "./src/components/Groupcation/GroupcationImage/GroupcationImage";
+import { theme } from "./src/styles/theme";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -57,34 +59,15 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <ScrollView
-        style={{ marginHorizontal: 20 }}
-        contentContainerStyle={{ gap: 10 }}
-        horizontal={true}
-      >
-        <GroupcationCard
-          groupcationName={"Groupcation Name"}
-          groupcationAddress={"City, Country & 99 more"}
-          groupcationDates={"1 Jan 3000 to 31 Dec 3000"}
-          cardImage={
-            "https://images.unsplash.com/photo-1525874684015-58379d421a52?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          }
-          cardTag={<Tag tagType="traveler" small />}
-          avatarStack={<AvatarStack users={usersInGroup} size={"sm"} />}
-          onPressCard={() => console.log("Navigate to groupcation.")}
-        />
-        <GroupcationCard
-          groupcationName={"Groupcation Name"}
-          groupcationAddress={"City, Country & 99 more"}
-          groupcationDates={"1 Jan 3000 to 31 Dec 3000"}
-          cardImage={
-            "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          }
-          cardTag={<Tag tagType="traveler" small />}
-          avatarStack={<AvatarStack users={usersInGroup} size={"sm"} />}
-          onPressCard={() => console.log("Navigate to groupcation.")}
-        />
-      </ScrollView>
+      <GroupcationImage
+        groupcationImage={
+          "https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
+        imageTab={<Tag tagType={"traveler"} />}
+        onTagPress={() => console.log("Tab")}
+        onSharePress={() => console.log("Share")}
+        onSettingsPress={() => console.log("Settings")}
+      />
     </View>
   );
 }
@@ -95,11 +78,11 @@ const styles = StyleSheet.create({
     marginTop: 30,
     justifyContent: "center",
     alignItems: "center",
-    flexDirection: "row",
+    // flexDirection: "row",
     gap: 20,
   },
   btn: {
     width: 112,
     height: 30,
-  },
+  }
 });

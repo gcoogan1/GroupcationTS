@@ -22,7 +22,7 @@ const Tag = ({ tagType, small }) => {
         if (tag.label === tagType) {
           return (
             <>
-              <Icon size={!!small && "sm"}>{tag.icon}</Icon>
+              <Icon key={tag.label} size={!!small && "sm"}>{tag.icon}</Icon>
               <Text
                 style={[
                   tagStyles.label,
