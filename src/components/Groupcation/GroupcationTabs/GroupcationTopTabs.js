@@ -37,6 +37,7 @@ const GroupcationTopTabs = () => {
       {GROUPCATION_TAGS.map((tab) => {
         return (
           <Tab.Screen
+            key={tab.name}
             name={tab.name}
             options={{
               tabBarLabel: ({ focused }) => (

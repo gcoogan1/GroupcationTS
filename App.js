@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import {
   useFonts,
   Rubik_400Regular,
@@ -15,7 +15,8 @@ import Placeholder from "./assets/icons/Placeholder.svg";
 import GroupcationCard from "./src/components/Groupcation/GroupcationCard/GroupcationCard";
 import GroupcationImage from "./src/components/Groupcation/GroupcationImage/GroupcationImage";
 import { theme } from "./src/styles/theme";
-import GroupcationTabs from "./src/components/Groupcation/GroupcationTabs/GroupcationTabs";
+import GroupcationTopTabs from "./src/components/Groupcation/GroupcationTabs/GroupcationTopTabs";
+import GroupcationBottomTabs from "./src/components/Groupcation/GroupcationTabs/GroupcationBottomTabs";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -62,9 +63,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <NavigationContainer>
-        <GroupcationTabs />
-      </NavigationContainer>
+        <NavigationContainer>
+          <GroupcationBottomTabs />
+        </NavigationContainer>
     </View>
   );
 }
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 50,
-    
+    marginHorizontal: 0
     // justifyContent: "center",
     // alignItems: "center",
     // // flexDirection: "row",
@@ -82,5 +83,9 @@ const styles = StyleSheet.create({
   btn: {
     width: 112,
     height: 30,
+  },
+  footerContainer: {
+    flex: 1,
+    marginHorizontal: theme.spacing.sm,
   }
 });
