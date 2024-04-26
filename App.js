@@ -5,6 +5,8 @@ import {
   Rubik_400Regular,
   Rubik_600SemiBold,
 } from "@expo-google-fonts/rubik";
+import { NavigationContainer } from "@react-navigation/native";
+
 import Tag from "./src/components/Tag/Tag";
 import DetailedRow from "./src/components/DetailedRow/DetailedRow";
 import Button from "./src/components/Button/Button";
@@ -13,6 +15,7 @@ import Placeholder from "./assets/icons/Placeholder.svg";
 import GroupcationCard from "./src/components/Groupcation/GroupcationCard/GroupcationCard";
 import GroupcationImage from "./src/components/Groupcation/GroupcationImage/GroupcationImage";
 import { theme } from "./src/styles/theme";
+import GroupcationTabs from "./src/components/Groupcation/GroupcationTabs/GroupcationTabs";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -59,15 +62,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <GroupcationImage
-        groupcationImage={
-          "https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        }
-        imageTab={<Tag tagType={"traveler"} />}
-        onTagPress={() => console.log("Tab")}
-        onSharePress={() => console.log("Share")}
-        onSettingsPress={() => console.log("Settings")}
-      />
+      <NavigationContainer>
+        <GroupcationTabs />
+      </NavigationContainer>
     </View>
   );
 }
@@ -75,11 +72,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    // flexDirection: "row",
-    gap: 20,
+    marginTop: 50,
+    
+    // justifyContent: "center",
+    // alignItems: "center",
+    // // flexDirection: "row",
+    // gap: 20,
   },
   btn: {
     width: 112,

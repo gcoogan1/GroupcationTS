@@ -56,7 +56,7 @@ const GroupcationImage = ({
       style={groupcationImageStyles.container}
     >
       <View style={groupcationImageStyles.topContentContainer}>
-        <View style={{ width: 36, height: 36 }}>
+        <View style={groupcationImageStyles.iconContainer}>
           {iconButton(
             <Close color={theme.color.surface.onBasePrimary} />,
             onClosePress
