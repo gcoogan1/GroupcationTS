@@ -11,6 +11,7 @@
   "dependencies": {
     "@expo-google-fonts/rubik": "^0.2.3",
     "@react-native-community/datetimepicker": "^7.7.0",
+    "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/material-bottom-tabs": "^6.2.28",
     "@react-navigation/material-top-tabs": "^6.6.13",
     "date-fns": "^3.6.0",
