@@ -6,6 +6,10 @@ import {
   Rubik_600SemiBold,
 } from "@expo-google-fonts/rubik";
 import { NavigationContainer } from "@react-navigation/native";
+import {
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 
 import Tag from "./src/components/Tag/Tag";
 import DetailedRow from "./src/components/DetailedRow/DetailedRow";
@@ -17,6 +21,7 @@ import GroupcationImage from "./src/components/Groupcation/GroupcationImage/Grou
 import { theme } from "./src/styles/theme";
 import GroupcationTopTabs from "./src/components/Groupcation/GroupcationTabs/GroupcationTopTabs";
 import GroupcationBottomTabs from "./src/components/Groupcation/GroupcationTabs/GroupcationBottomTabs";
+import GroupcationRequest from "./src/components/Groupcation/GroupcationTabs/GroupcationRequest";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -63,9 +68,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
+      <SafeAreaProvider>
         <NavigationContainer>
-          <GroupcationBottomTabs />
+          <GroupcationRequest />
         </NavigationContainer>
+      </SafeAreaProvider>
     </View>
   );
 }
@@ -74,7 +81,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 50,
-    marginHorizontal: 0
+    marginHorizontal: 0,
+    backgroundColor: "#fffff"
     // justifyContent: "center",
     // alignItems: "center",
     // // flexDirection: "row",
