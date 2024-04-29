@@ -155,6 +155,9 @@ const semanticColors = {
     base: primitiveColors.neutral[200],
     onBase: primitiveColors.neutral[400],
   },
+  shadow: {
+    dark: primitiveColors.neutral.black
+  }
 };
 
 // Typography

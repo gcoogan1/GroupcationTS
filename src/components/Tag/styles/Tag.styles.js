@@ -9,7 +9,7 @@ export const tagStyles = StyleSheet.create({
    alignItems: 'center',
    padding: theme.spacing.xs,
    gap: theme.spacing.xs,
-   backgroundColor: 'rgba(255, 255, 255, .1)'
+   backgroundColor: theme.color.surface.base
   },
   label: {
     ...theme.typeography.body.mdBold,

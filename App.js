@@ -1,15 +1,27 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import {
   useFonts,
   Rubik_400Regular,
   Rubik_600SemiBold,
 } from "@expo-google-fonts/rubik";
+import { NavigationContainer } from "@react-navigation/native";
+import {
+  SafeAreaProvider,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
+
 import Tag from "./src/components/Tag/Tag";
 import DetailedRow from "./src/components/DetailedRow/DetailedRow";
 import Button from "./src/components/Button/Button";
 import AvatarStack from "./src/components/AvatarStack/AvatarStack";
 import Placeholder from "./assets/icons/Placeholder.svg";
+import GroupcationCard from "./src/components/Groupcation/GroupcationCard/GroupcationCard";
+import GroupcationImage from "./src/components/Groupcation/GroupcationImage/GroupcationImage";
+import { theme } from "./src/styles/theme";
+import GroupcationTopTabs from "./src/components/Groupcation/GroupcationTabs/GroupcationTopTabs";
+import GroupcationBottomTabs from "./src/components/Groupcation/GroupcationTabs/GroupcationBottomTabs";
+import GroupcationRequest from "./src/components/Groupcation/GroupcationTabs/GroupcationRequest";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -56,22 +68,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <DetailedRow
-        rowLabel={"row label"}
-        rowText={"row text"}
-        rowButton={
-          <Button
-            buttonType="primary"
-            buttonSize={"sm"}
-            onPress={() => console.log("here")}
-            iconRight={<Placeholder color="white" />}
-            iconLeft={<Placeholder color="white" />}
-          >
-            Label
-          </Button>
-        }
-        avatarStack={<AvatarStack users={usersInGroup} size={"md"} />}
-      />
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <GroupcationBottomTabs />
+        </NavigationContainer>
+      </SafeAreaProvider>
     </View>
   );
 }
@@ -79,12 +80,20 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 30,
-    justifyContent: "center",
-    alignItems: "center",
+    marginTop: 50,
+    marginHorizontal: 0,
+    backgroundColor: "#fffff"
+    // justifyContent: "center",
+    // alignItems: "center",
+    // // flexDirection: "row",
+    // gap: 20,
   },
   btn: {
     width: 112,
     height: 30,
   },
+  footerContainer: {
+    flex: 1,
+    marginHorizontal: theme.spacing.sm,
+  }
 });
