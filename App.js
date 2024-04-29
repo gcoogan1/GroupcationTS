@@ -70,7 +70,7 @@ export default function App() {
       <StatusBar style="auto" />
       <SafeAreaProvider>
         <NavigationContainer>
-          <GroupcationRequest />
+          <GroupcationBottomTabs />
         </NavigationContainer>
       </SafeAreaProvider>
     </View>

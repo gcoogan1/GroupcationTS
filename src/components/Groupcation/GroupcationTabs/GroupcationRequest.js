@@ -7,6 +7,14 @@ import { theme } from "../../../styles/theme";
 import Button from "../../Button/Button";
 import FavoriteToggle from "../../FavoriteToggle/FavoriteToggle";
 
+//TODO: Replace test screen with Overview screen
+/**
+ * This component renders a bottom tab with a button and favorites toggle to request to join a groupcation or favorite a groupcation
+ * @note This will be displayed when an unauthorzied user is looking at a groupcation. 
+ * @returns {ReactElement} Renders groupcation request tab.
+ *
+ * @example <GroupcationRequest />
+ */
 const GroupcationRequest = () => {
   const Tab = createBottomTabNavigator();
   const insets = useSafeAreaInsets();
