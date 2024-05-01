@@ -22,6 +22,7 @@ import { theme } from "./src/styles/theme";
 import GroupcationTopTabs from "./src/components/Groupcation/GroupcationTabs/GroupcationTopTabs";
 import GroupcationBottomTabs from "./src/components/Groupcation/GroupcationTabs/GroupcationBottomTabs";
 import GroupcationRequest from "./src/components/Groupcation/GroupcationTabs/GroupcationRequest";
+import Navbar from "./src/components/Navbar/Navbar";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -68,11 +69,12 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <SafeAreaProvider>
+      <Navbar type={"groupcation"} pageTitle={"Overview"} onSharePress={() => console.log("share")} onSettingsPress={() => console.log('settings')} />
+      {/* <SafeAreaProvider>
         <NavigationContainer>
           <GroupcationBottomTabs />
         </NavigationContainer>
-      </SafeAreaProvider>
+      </SafeAreaProvider> */}
     </View>
   );
 }
@@ -82,9 +84,10 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 50,
     marginHorizontal: 0,
-    backgroundColor: "#fffff"
-    // justifyContent: "center",
-    // alignItems: "center",
+    
+    backgroundColor: "#fffff",
+    justifyContent: "center",
+    alignItems: "center",
     // // flexDirection: "row",
     // gap: 20,
   },
