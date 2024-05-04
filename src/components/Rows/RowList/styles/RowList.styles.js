@@ -4,7 +4,7 @@ import { theme } from "../../../../styles/theme";
 export const rowListStyles = StyleSheet.create({
   listContianer: {
     ...theme.border.radius.md,
-    width: 300
+    minWidth: 300
   },
   rowListContainer: {
     padding: theme.spacing.md,
@@ -12,6 +12,7 @@ export const rowListStyles = StyleSheet.create({
     backgroundColor: theme.color.surface.layer
   },
   rowLinkListContainer: {
+    ...theme.border.radius.md,
     ...theme.border.width.md,
     borderColor: theme.color.surface.line
   }

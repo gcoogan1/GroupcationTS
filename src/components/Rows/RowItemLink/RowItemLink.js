@@ -15,10 +15,11 @@ import RowItemLinkConstants from "./constants/RowItemLink.constants";
  * @prop {svg} icon optional -> icon to be displayed
  * @prop {component} user optional -> avatar to be displayed in place of icon
  * @prop {component} avatars optional -> avatar stack to be displayed
- * @prop {boolean} showChevron optional -> displays chevron (set to false if using avatars or message)
+ * @prop {boolean} showChevron optional -> displays chevron (set to false if using avatars or message or if cost is available (type user))
  * @prop {boolean} showDivider optional -> displays bottom divider
  * @prop {boolean} isDisabled optional -> sets disabled state if row item link
  * @prop {number} count optional -> number of messages left unread (type message)
+ * @prop {number} cost optional -> cost of an activity (type user)
  * @prop {string} time optional -> time the message was sent(type message) -> ex. 12:06pm, yesterday, 10/09/2024
  * @returns {ReactElement} Renders a row item.
  *
@@ -42,7 +43,8 @@ const RowItemLink = ({
   showDivider,
   isDisabled,
   count,
-  time
+  cost,
+  time,
 }) => {
   const typeTextStyles = RowItemLinkConstants.ROW_ITEM_LINK_TEXT_STYLE[type];
 
@@ -61,7 +63,12 @@ const RowItemLink = ({
             {!!icon && <Icon>{icon}</Icon>}
             {!!user && <>{user}</>}
           </View>
-          <View style={rowItemLinkStyles.labelContainer}>
+          <View
+            style={[
+              rowItemLinkStyles.labelContainer,
+              !!user && rowItemLinkStyles.user,
+            ]}
+          >
             <Text
               numberOfLines={1}
               style={[
@@ -128,6 +135,11 @@ const RowItemLink = ({
                     {count}
                   </Text>
                 </View>
+              </View>
+            )}
+            {!!cost && type === "user" && (
+              <View style={rowItemLinkStyles.costContainer}>
+                <Text style={rowItemLinkStyles.costText}>{cost}</Text>
               </View>
             )}
           </View>
