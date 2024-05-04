@@ -1,7 +1,7 @@
 import { Pressable, Text, View } from "react-native";
 
 import { activityCardStyles } from "./styles/ActivityCard.styles";
-import activtyConstants from "./constants/ActivityCard.constants";
+import activtyConstants from "../constants/Activity.constants";
 import Pictogram from "../../Pictogram/Pictogram";
 
 // TODO: Replace activityConstants Header/subHeader with props passed, check types display

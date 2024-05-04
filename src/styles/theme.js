@@ -131,7 +131,7 @@ const semanticColors = {
   note: {
     base: primitiveColors.yellow[500],
     tonal: primitiveColors.yellow[50],
-    onBase: primitiveColors.neutral.white,
+    onBase: primitiveColors.yellow[900],
   },
   error: {
     base: primitiveColors.utility.red500,
