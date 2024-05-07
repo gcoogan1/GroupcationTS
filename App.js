@@ -27,6 +27,7 @@ import ActivityCard from "./src/components/Activity/ActivityCard/ActivityCard";
 import ActivityCost from "./src/components/Activity/ActivityCost/ActivityCost";
 import Avatar from "./src/components/Avatar/Avatar";
 import ActivityHeader from "./src/components/Activity/ActivityHeader/ActivityHeader";
+import ActivityInformation from "./src/components/Activity/ActivityInformation/ActivityInformation";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -113,7 +114,7 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View style={{ width: 370 }}>
-        <ActivityHeader type="flight" />
+        <ActivityInformation type={'flight'} />
       </View>
       {/* <SafeAreaProvider>
         <NavigationContainer>
