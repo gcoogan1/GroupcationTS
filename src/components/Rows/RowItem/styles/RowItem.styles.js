@@ -3,7 +3,7 @@ import { theme } from "../../../../styles/theme";
 
 export const rowItemStyles = StyleSheet.create({
   container: {
-    width: 300,
+    minWidth: 300,
     flexDirection: 'row',
     gap: theme.spacing.sm
   },

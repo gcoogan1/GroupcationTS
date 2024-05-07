@@ -9,7 +9,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+} from "react-native-safe-area-context";
 
 import Tag from "./src/components/Tag/Tag";
 import DetailedRow from "./src/components/DetailedRow/DetailedRow";
@@ -23,6 +23,11 @@ import GroupcationTopTabs from "./src/components/Groupcation/GroupcationTabs/Gro
 import GroupcationBottomTabs from "./src/components/Groupcation/GroupcationTabs/GroupcationBottomTabs";
 import GroupcationRequest from "./src/components/Groupcation/GroupcationTabs/GroupcationRequest";
 import Navbar from "./src/components/Navbar/Navbar";
+import ActivityCard from "./src/components/Activity/ActivityCard/ActivityCard";
+import ActivityCost from "./src/components/Activity/ActivityCost/ActivityCost";
+import Avatar from "./src/components/Avatar/Avatar";
+import ActivityHeader from "./src/components/Activity/ActivityHeader/ActivityHeader";
+import ActivityInformation from "./src/components/Activity/ActivityInformation/ActivityInformation";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -66,10 +71,51 @@ export default function App() {
     },
   ];
 
+  const users = [
+    {
+      userName: "Patrick Star",
+      avatar: (
+        <Avatar
+          size={"sm"}
+          avatarImage={{
+            uri: "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png",
+          }}
+        />
+      ),
+      cost: 90,
+    },
+    {
+      userName: "Spongebob Squarepants",
+      avatar: (
+        <Avatar
+          size={"sm"}
+          avatarImage={{
+            uri: "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/600px-SpongeBob_SquarePants_character.svg.png?20231203073904",
+          }}
+        />
+      ),
+      cost: 99999,
+    },
+    {
+      userName: "Sandy Cheeks",
+      avatar: (
+        <Avatar
+          size={"sm"}
+          avatarImage={{
+            uri: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a0/Sandy_Cheeks.svg/440px-Sandy_Cheeks.svg.png",
+          }}
+        />
+      ),
+      cost: 2000,
+    },
+  ];
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Navbar type={"groupcation"} pageTitle={"Overview"} onSharePress={() => console.log("share")} onSettingsPress={() => console.log('settings')} />
+      <View style={{ width: 370 }}>
+        <ActivityInformation type={'flight'} />
+      </View>
       {/* <SafeAreaProvider>
         <NavigationContainer>
           <GroupcationBottomTabs />
@@ -84,7 +130,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 50,
     marginHorizontal: 0,
-    
+
     backgroundColor: "#fffff",
     justifyContent: "center",
     alignItems: "center",
@@ -98,5 +144,5 @@ const styles = StyleSheet.create({
   footerContainer: {
     flex: 1,
     marginHorizontal: theme.spacing.sm,
-  }
+  },
 });

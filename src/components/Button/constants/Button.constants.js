@@ -64,7 +64,8 @@ const BUTTON_TYPE_COLORS = {
     },
     pressed: {
       borderColor: theme.color.surface.onBasePrimary,
-      backgroundColor: theme.color.surface.line,
+      // backgroundColor: theme.color.surface.line,
+      backgroundColor: "rgba(56, 56, 56, .5)"
     },
     disabled: {
       borderColor: "transparent",

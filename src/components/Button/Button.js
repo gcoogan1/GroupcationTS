@@ -18,6 +18,7 @@ import { getButtonStyle, getTextStyle, getDisplayIcon } from "./util/util";
  * @param {svg} iconRight optional -> displays icon (set color in icon element) to the right of text
  * @param {svg} iconLeft optional -> displays icon (set color in icon element) to the left of text
  * @param {object} styles optional -> add styles to button
+ * @param {object} textStyle optional -> add styles to button text
  * @returns {ReactElement} Renders a button.
  * 
  * @example   
@@ -41,8 +42,9 @@ const Button = ({
   iconRight,
   iconLeft,
   styles,
+  textStyle
 }) => {
-  const textStyle = getTextStyle(buttonType, isDisabled);
+  const typeTextStyle = getTextStyle(buttonType, isDisabled);
 
   return (
     <Pressable
@@ -56,8 +58,8 @@ const Button = ({
       onPress={onPress}
     >
       {getDisplayIcon(iconRight, isLoading)}
-      {isLoading && <Loader color={textStyle.color} />}
-      <Text style={[textStyle, defaultButtonStyles.text]}>{children}</Text>
+      {isLoading && <Loader color={typeTextStyle.color} />}
+      <Text style={[typeTextStyle, defaultButtonStyles.text, {...textStyle}]}>{children}</Text>
       {getDisplayIcon(iconLeft, isLoading)}
     </Pressable>
   );
