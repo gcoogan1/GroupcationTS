@@ -1,5 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Alert,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import {
   useFonts,
   Rubik_400Regular,
@@ -28,8 +36,17 @@ import ActivityCost from "./src/components/Activity/ActivityCost/ActivityCost";
 import Avatar from "./src/components/Avatar/Avatar";
 import ActivityHeader from "./src/components/Activity/ActivityHeader/ActivityHeader";
 import ActivityInformation from "./src/components/Activity/ActivityInformation/ActivityInformation";
+import InputSearch from "./src/components/Inputs/InputSearch/InputSearch";
+import { useState } from "react";
 
 export default function App() {
+  const [searchSuggestions, setSearchSuggestions] = useState([
+    { id: 1, text: "Paris" },
+    { id: 2, text: "London" },
+    { id: 3, text: "Berlin" },
+    { id: 4, text: "New York" },
+    { id: 5, text: "Hong Kong" },
+  ]);
   let [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_600SemiBold,
@@ -39,83 +56,31 @@ export default function App() {
     return null;
   }
 
-  const usersInGroup = [
-    {
-      // image: 'https://i.pinimg.com/564x/d3/05/d6/d305d6b4957713e981c43d381c12b862.jpg',
-      initials: "gc",
-      userId: "123",
-    },
-    {
-      image:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png",
-      initials: "hb",
-      userId: "456",
-    },
-    {
-      image:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png",
-      initials: "hb",
-      userId: "456",
-    },
-    {
-      image:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png",
-      initials: "hb",
-      userId: "456",
-    },
-    {
-      image:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png",
-      initials: "hb",
-      userId: "456",
-    },
+  const handleSearch = (query) => {
+    console.log("Searching for:", query);
+  };
+
+  const mockSuggestions = [
+    { id: 1, text: "Paris" },
+    { id: 2, text: "London" },
+    { id: 3, text: "Berlin" },
+    { id: 4, text: "New York" },
+    { id: 5, text: "Hong Kong" },
   ];
 
-  const users = [
-    {
-      userName: "Patrick Star",
-      avatar: (
-        <Avatar
-          size={"sm"}
-          avatarImage={{
-            uri: "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png",
-          }}
-        />
-      ),
-      cost: 90,
-    },
-    {
-      userName: "Spongebob Squarepants",
-      avatar: (
-        <Avatar
-          size={"sm"}
-          avatarImage={{
-            uri: "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/600px-SpongeBob_SquarePants_character.svg.png?20231203073904",
-          }}
-        />
-      ),
-      cost: 99999,
-    },
-    {
-      userName: "Sandy Cheeks",
-      avatar: (
-        <Avatar
-          size={"sm"}
-          avatarImage={{
-            uri: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a0/Sandy_Cheeks.svg/440px-Sandy_Cheeks.svg.png",
-          }}
-        />
-      ),
-      cost: 2000,
-    },
-  ];
+  const suggestionItem = (item) => {
+    return <Text style={styles.suggestionItemText}>{item.text}</Text>
+  };
+
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={{ width: 370 }}>
-        <ActivityInformation type={'flight'} />
-      </View>
+      <InputSearch
+        onSearch={handleSearch}
+        data={mockSuggestions}
+        selectionItem={(item) => suggestionItem(item)}
+      />
       {/* <SafeAreaProvider>
         <NavigationContainer>
           <GroupcationBottomTabs />
@@ -144,5 +109,9 @@ const styles = StyleSheet.create({
   footerContainer: {
     flex: 1,
     marginHorizontal: theme.spacing.sm,
+  },
+  suggestionItemText: {
+    ...theme.typeography.body.md,
+    color: theme.color.surface.onBasePrimary,
   },
 });
