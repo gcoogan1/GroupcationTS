@@ -40,6 +40,7 @@ import ActivityInformation from "./src/components/Activity/ActivityInformation/A
 import InputSearch from "./src/components/Inputs/InputSearch/InputSearch";
 import { useState } from "react";
 import InputText from "./src/components/Inputs/InputText/InputText";
+import InputSelect from "./src/components/Inputs/InputSelect/InputSelect";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -51,29 +52,39 @@ export default function App() {
     return null;
   }
 
-  const disabledState = false
+  const disabledState = false;
+  const data = [
+    { label: "Item 1", value: "1" },
+    { label: "Item 2", value: "2" },
+    { label: "Item 3", value: "3" },
+    { label: "Item 4", value: "4" },
+    { label: "Item 5", value: "5" },
+    { label: "Item 6", value: "6" },
+    { label: "Item 7", value: "7" },
+    { label: "Item 8", value: "8" },
+  ];
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <InputText
-        placeholder={"placeholder text"}
-        inputLabel={"input label"}
-        inputName="placeholder"
-        showCount
-        showClear
-        placeholderIcon={
-          <Placeholder
-            color={
-              !disabledState
-                ? theme.color.surface.onBasePrimary
-                : theme.color.disabled.onBase
-            }
-          />
-        }
-        isDisabled={disabledState}
-        helperText={"helper text"}
-      />
+      <View style={styles.content}>
+        <InputSelect
+          inputOptions={data}
+          inputLabel={"input label"}
+          placeholder={"Placeholder Text"}
+          helperText={"helper text"}
+          isDisabled={disabledState}
+          placeholderIcon={
+            <Placeholder
+              color={
+                !disabledState
+                  ? theme.color.surface.onBasePrimary
+                  : theme.color.disabled.onBase
+              }
+            />
+          }
+        />
+      </View>
       {/* <SafeAreaProvider>
         <NavigationContainer>
           <GroupcationBottomTabs />
@@ -94,6 +105,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     // // flexDirection: "row",
     // gap: 20,
+  },
+  content: {
+    width: 300,
   },
   btn: {
     width: 112,
