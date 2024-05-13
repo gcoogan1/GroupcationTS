@@ -11,6 +11,7 @@ import { defaultInlineStyles } from "./styles/InlineButton.styles";
  * @param {string} children required -> label of button
  * @param {function} onPress required -> onClick event for button
  * @param {string} buttonType optional -> primary, secondary (defaults to the primary type)
+ * @param {object} styles optional -> add styles to button
  * @param {boolean} isDisabled optional -> sets disabled state of button
  * @param {svg} iconRight optional -> displays icon (set color in icon element) to the right of text
  * @param {svg} iconLeft optional -> displays icon (set color in icon element) to the left of text
@@ -22,12 +23,15 @@ const InlineButton = ({
   children,
   onPress,
   buttonType,
+  styles,
   isDisabled,
   iconRight,
   iconLeft,
 }) => {
   const getTextColor = (buttonType, isDisabled) => {
-    if (isDisabled || buttonType === "secondary")
+    if (isDisabled) 
+      return { color: theme.color.disabled.onBase }
+    if (buttonType === "secondary")
       return { color: theme.color.surface.onBaseSecondary };
     return { color: theme.color.surface.onBasePrimary };
   };
@@ -36,8 +40,9 @@ const InlineButton = ({
     <Pressable
       style={({ pressed, focused }) => [
         defaultInlineStyles.button,
+        { ...styles },
         pressed && defaultInlineStyles.pressed,
-        focused && defaultInlineStyles.focused,
+        focused && defaultInlineStyles.focused
       ]}
       disabled={isDisabled}
       onPress={onPress}

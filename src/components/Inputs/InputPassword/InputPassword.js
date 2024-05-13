@@ -3,15 +3,15 @@ import { useForm, Controller } from "react-hook-form";
 import { createRef, useState } from "react";
 
 import { theme } from "../../../styles/theme";
-import { inputTextStyles } from "./styles/InputText.styles";
+import { inputPasswordStyles } from "./styles/InputPassword.styles";
 import { capitilaizeFirstLetter } from "../../../../util/helperFunctions/helperFunctions";
 import Icon from "../../Icon/Icon";
 import Close from "../../../../assets/icons/Close.svg";
 import Error from "../../../../assets/icons/Error.svg";
+import InlineButton from "../../InlineButton/InlineButton";
 
 /**
- * This component renders a text input with an optional placeholder icon.
- * clear button, helper text and counter.
+ * This component renders a password input that gives the option to show/hide password.
  * @prop {string} inputName required -> name of input
  * @prop {string} inputLabel required -> label to be displayed
  * @prop {string} placeholder optional -> placeholder text to be displayed
@@ -19,15 +19,12 @@ import Error from "../../../../assets/icons/Error.svg";
  * remember to include disabled color. (see below)
  * Ex. <Placeholder color={!isDisabled ? theme.color.surface.onBasePrimary : theme.color.disabled.onBase} />
  * @prop {string} helperText optional -> helper text to be displayed below the input
- * @prop {boolean} showCount optional -> shows current input charcter count above the input 
- * @prop {boolean} showClear optional -> if true, displays a clear buttton with the option 
- * to clear the input field
  * @prop {boolean} isDisabled optional -> disabled state of the input
  * @prop {boolean} inputError optional -> error state of the input
- * @returns {ReactNode} Renders a input text field.
+ * @returns {ReactNode} Renders a input password field.
  * 
  * @example 
- * <InputText
+ * <InputPassword
     placeholder={"placeholder text"}
     inputLabel={"input label"}
     inputName="placeholder"
@@ -44,20 +41,19 @@ import Error from "../../../../assets/icons/Error.svg";
     }
     isDisabled={disabledState}
     helperText={"helper text"}
-  />
+   />
  */
-const InputText = ({
+const InputPassword = ({
   inputName,
   inputLabel,
   placeholder,
   placeholderIcon,
   helperText,
-  showCount,
-  showClear,
   isDisabled,
-  inputError,
+  inputError
 }) => {
   const [isFocused, setIsFocused] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [count, setCount] = useState(0);
   const { control } = useForm();
   const inputRef = createRef();
@@ -71,33 +67,25 @@ const InputText = ({
   };
 
   const handleOnChange = (char) => {
-    if (!!showCount) {
-      const countLength = count.length;
-      const characterLength = char.length;
-      if (countLength !== characterLength) {
-        setCount(characterLength);
-      }
+    const countLength = count.length;
+    const characterLength = char.length;
+    if (countLength !== characterLength) {
+      setCount(characterLength);
     }
   };
 
-  const handleClearInput = () => {
-    inputRef.current.clear();
-    setCount(0);
-  };
-
   return (
-    <View style={inputTextStyles.container}>
-      <View style={inputTextStyles.labelContainer}>
+    <View style={inputPasswordStyles.container}>
+      <View style={inputPasswordStyles.labelContainer}>
         <Text
           style={[
-            inputTextStyles.label,
-            isDisabled && inputTextStyles.labelDisabled,
-            inputError && inputTextStyles.labelError,
+            inputPasswordStyles.label,
+            isDisabled && inputPasswordStyles.labelDisabled,
+            inputError && inputPasswordStyles.labelError,
           ]}
         >
           {inputLabel}
         </Text>
-        {!!showCount && <Text style={inputTextStyles.count}>{count}/999</Text>}
       </View>
       <Controller
         control={control}
@@ -107,18 +95,19 @@ const InputText = ({
         render={({ field: { onChange, onBlur, value } }) => (
           <View
             style={[
-              inputTextStyles.inputContainer,
-              isFocused && inputTextStyles.inputContainerFocused,
-              inputError && inputTextStyles.inputContainerError,
-              isDisabled && inputTextStyles.inputContainerDisabled,
+              inputPasswordStyles.inputContainer,
+              isFocused && inputPasswordStyles.inputContainerFocused,
+              inputError && inputPasswordStyles.inputContainerError,
+              isDisabled && inputPasswordStyles.inputContainerDisabled,
             ]}
           >
             <Icon>{placeholderIcon}</Icon>
             <TextInput
               ref={inputRef}
+              secureTextEntry={!showPassword}
               style={[
-                inputTextStyles.input,
-                isDisabled && inputTextStyles.inputDisabled,
+                inputPasswordStyles.input,
+                isDisabled && inputPasswordStyles.inputDisabled,
               ]}
               placeholder={capitilaizeFirstLetter(placeholder)}
               onBlur={handleBlur}
@@ -129,17 +118,27 @@ const InputText = ({
               value={value}
               editable={!isDisabled}
             />
-            {!!showClear && !inputError && !isDisabled && (
-              <TouchableOpacity onPress={handleClearInput}>
-                <Icon>
-                  <Close color={theme.color.surface.onBaseSecondary} />
-                </Icon>
-              </TouchableOpacity>
-            )}
-            {!!inputError && (
-              <Icon>
-                <Error color={theme.color.error.base} />
-              </Icon>
+
+            {count > 0 && (
+              <>
+                {!showPassword ? (
+                  <InlineButton
+                    onPress={() => setShowPassword(true)}
+                    buttonType={"secondary"}
+                    isDisabled={isDisabled}
+                  >
+                    Show
+                  </InlineButton>
+                ) : (
+                  <InlineButton
+                    onPress={() => setShowPassword(false)}
+                    buttonType={"secondary"}
+                    isDisabled={isDisabled}
+                  >
+                    Hide
+                  </InlineButton>
+                )}
+              </>
             )}
           </View>
         )}
@@ -148,18 +147,18 @@ const InputText = ({
       {!!helperText && (
         <Text
           style={[
-            inputTextStyles.helperText,
-            isDisabled && inputTextStyles.helperTextDisabled,
+            inputPasswordStyles.helperText,
+            isDisabled && inputPasswordStyles.helperTextDisabled,
           ]}
         >
           {helperText}
         </Text>
       )}
       {!!inputError && (
-        <Text style={inputTextStyles.errorText}>This is required.</Text>
+        <Text style={inputPasswordStyles.errorText}>This is required.</Text>
       )}
     </View>
   );
 };
 
-export default InputText;
+export default InputPassword;
