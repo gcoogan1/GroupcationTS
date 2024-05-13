@@ -18,6 +18,7 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
+import { useForm } from "react-hook-form";
 
 import Tag from "./src/components/Tag/Tag";
 import DetailedRow from "./src/components/DetailedRow/DetailedRow";
@@ -38,15 +39,9 @@ import ActivityHeader from "./src/components/Activity/ActivityHeader/ActivityHea
 import ActivityInformation from "./src/components/Activity/ActivityInformation/ActivityInformation";
 import InputSearch from "./src/components/Inputs/InputSearch/InputSearch";
 import { useState } from "react";
+import InputText from "./src/components/Inputs/InputText/InputText";
 
 export default function App() {
-  const [searchSuggestions, setSearchSuggestions] = useState([
-    { id: 1, text: "Paris" },
-    { id: 2, text: "London" },
-    { id: 3, text: "Berlin" },
-    { id: 4, text: "New York" },
-    { id: 5, text: "Hong Kong" },
-  ]);
   let [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_600SemiBold,
@@ -56,30 +51,28 @@ export default function App() {
     return null;
   }
 
-  const handleSearch = (query) => {
-    console.log("Searching for:", query);
-  };
-
-  const mockSuggestions = [
-    { id: 1, text: "Paris" },
-    { id: 2, text: "London" },
-    { id: 3, text: "Berlin" },
-    { id: 4, text: "New York" },
-    { id: 5, text: "Hong Kong" },
-  ];
-
-  const suggestionItem = (item) => {
-    return <Text style={styles.suggestionItemText}>{item.text}</Text>
-  };
-
+  const disabledState = false
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <InputSearch
-        onSearch={handleSearch}
-        data={mockSuggestions}
-        selectionItem={(item) => suggestionItem(item)}
+      <InputText
+        placeholder={"placeholder text"}
+        inputLabel={"input label"}
+        inputName="placeholder"
+        showCount
+        showClear
+        placeholderIcon={
+          <Placeholder
+            color={
+              !disabledState
+                ? theme.color.surface.onBasePrimary
+                : theme.color.disabled.onBase
+            }
+          />
+        }
+        isDisabled={disabledState}
+        helperText={"helper text"}
       />
       {/* <SafeAreaProvider>
         <NavigationContainer>

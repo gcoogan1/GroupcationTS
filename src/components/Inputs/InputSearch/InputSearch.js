@@ -12,7 +12,7 @@ import { inputSearchStyles } from "./styles/InputSearch.styles";
  * @prop {function} onSearch required -> event to be fired when search is pressed
  * @prop {function} selectionItem required -> event that returns a component to render as the 
  * selection item. The function recieves an item prop that will contain the selection item data.
- * @prop {boolen} isDisabled optional -> disabled state of the input
+ * @prop {boolean} isDisabled optional -> disabled state of the input
  * @returns {ReactNode} Renders a select input field.
  * 
  * @example 

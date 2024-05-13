@@ -17,8 +17,7 @@ export const inputSearchStyles = StyleSheet.create({
     backgroundColor: theme.color.surface.layer,
     gap: theme.spacing.xs,
     flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
+    alignItems: "center"
   },
   inputContainerFocused: {
     borderColor: theme.color.focus.line, 
