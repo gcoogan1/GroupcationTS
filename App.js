@@ -41,6 +41,7 @@ import InputSearch from "./src/components/Inputs/InputSearch/InputSearch";
 import { useState } from "react";
 import InputText from "./src/components/Inputs/InputText/InputText";
 import InputPassword from "./src/components/Inputs/InputPassword/InputPassword";
+import InputSelect from "./src/components/Inputs/InputSelect/InputSelect";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -53,33 +54,19 @@ export default function App() {
   }
 
   const disabledState = false
+  const data = [{value: '1', label: 'one' }, {value: '2', label: 'two' }]
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <InputPassword
+      <InputSelect
         placeholder={"placeholder text"}
         inputLabel={"input label"}
         inputName="placeholder"
-        showCount
-        showClear
-        placeholderIcon={
-          <Placeholder
-            color={
-              !disabledState
-                ? theme.color.surface.onBasePrimary
-                : theme.color.disabled.onBase
-            }
-          />
-        }
+        inputOptions={data}
         isDisabled={disabledState}
         helperText={"helper text"}
       />
-      {/* <SafeAreaProvider>
-        <NavigationContainer>
-          <GroupcationBottomTabs />
-        </NavigationContainer>
-      </SafeAreaProvider> */}
     </View>
   );
 }

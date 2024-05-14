@@ -26,12 +26,8 @@ export const inputSelectStyles = StyleSheet.create({
     ...theme.border.radius.sm,
     ...theme.border.width.lg,
     borderColor: theme.color.surface.onBasePrimary,
-    padding: theme.spacing.md,
     backgroundColor: theme.color.surface.layer,
     gap: theme.spacing.xs,
-  },
-  inputContainerFocused: {
-    borderColor: theme.color.focus.line,
   },
   inputContainerError: {
     borderColor: theme.color.error.base,
@@ -48,7 +44,7 @@ export const inputSelectStyles = StyleSheet.create({
   },
   placeholder: {
     ...theme.typeography.body.md,
-    color: theme.color.surface.onBaseSecondary,
+    color: theme.color.surface.onBaseSecondary
   },
   placeholderSelected: {
     ...theme.typeography.body.md,
@@ -56,12 +52,6 @@ export const inputSelectStyles = StyleSheet.create({
   },
   placeholderDisabled: {
     color: theme.color.disabled.onBase,
-  },
-  leftIconContainer: {
-    marginRight: theme.spacing.sm,
-  },
-  rightIconContainer: {
-    flexDirection: "row",
   },
   helperText: {
     ...theme.typeography.body.md,
@@ -71,8 +61,12 @@ export const inputSelectStyles = StyleSheet.create({
   helperTextDisabled: {
     color: theme.color.disabled.onBase,
   },
+  errorIcon: {
+    top: 18,
+    right: 36
+  },
   errorText: {
     ...theme.typeography.body.md,
     color: theme.color.error.base,
-  },
+  }
 });
