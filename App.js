@@ -42,6 +42,7 @@ import { useState } from "react";
 import InputText from "./src/components/Inputs/InputText/InputText";
 import InputPassword from "./src/components/Inputs/InputPassword/InputPassword";
 import InputSelect from "./src/components/Inputs/InputSelect/InputSelect";
+import InputCode from "./src/components/Inputs/InputCode/InputCode";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -59,13 +60,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <InputSelect
-        placeholder={"placeholder text"}
+      <InputCode
         inputLabel={"input label"}
-        inputName="placeholder"
-        inputOptions={data}
+        inputName="input name"
         isDisabled={disabledState}
-        helperText={"helper text"}
       />
     </View>
   );
