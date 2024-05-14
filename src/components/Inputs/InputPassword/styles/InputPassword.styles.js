@@ -5,6 +5,7 @@ import { theme } from "../../../../styles/theme";
 export const inputPasswordStyles = StyleSheet.create({
   container: {
     minWidth: 300,
+    minHeight: 130,
     gap: theme.spacing["2xs"],
   },
   labelContainer: {

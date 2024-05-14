@@ -8,6 +8,7 @@ export const inputSearchStyles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 10,
     minWidth: 300,
+    minHeight: 130
   },
   inputContainer: {
     ...theme.border.radius.md,

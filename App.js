@@ -43,6 +43,7 @@ import InputText from "./src/components/Inputs/InputText/InputText";
 import InputPassword from "./src/components/Inputs/InputPassword/InputPassword";
 import InputSelect from "./src/components/Inputs/InputSelect/InputSelect";
 import InputCode from "./src/components/Inputs/InputCode/InputCode";
+import InputDate from "./src/components/Inputs/InputDate/InputDate";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -60,11 +61,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <InputCode
-        inputLabel={"input label"}
-        inputName="input name"
-        isDisabled={disabledState}
-      />
+      <InputDate inputLabel={"input label"} inputName={"date"} helperText={"helper"} />
     </View>
   );
 }
