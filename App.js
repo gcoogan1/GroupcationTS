@@ -45,6 +45,7 @@ import InputSelect from "./src/components/Inputs/InputSelect/InputSelect";
 import InputCode from "./src/components/Inputs/InputCode/InputCode";
 import InputDate from "./src/components/Inputs/InputDate/InputDate";
 import InputTime from "./src/components/Inputs/InputTime/InputTime";
+import InputTextArea from "./src/components/Inputs/InputTextArea/InputTextArea";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -56,14 +57,26 @@ export default function App() {
     return null;
   }
 
-  const disabledState = false
-  const data = [{value: '1', label: 'one' }, {value: '2', label: 'two' }]
+  const disabledState = false;
+  const data = [
+    { value: "1", label: "one" },
+    { value: "2", label: "two" },
+  ];
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <InputDate inputLabel={"input label"} inputName={"date"}  />
-      <InputTime inputLabel={"input label"} is inputName={"date"}  />
+      <InputDate inputLabel={"input label"} inputName={"date"} />
+      <InputTime inputLabel={"input label"} inputName={"date"} />
+      <InputTextArea
+        placeholder={"placeholder text"}
+        inputLabel={"input label"}
+        inputName="placeholder"
+        showCount
+        showClear
+        isDisabled={disabledState}
+        helperText={"helper text"}
+      />
     </View>
   );
 }

@@ -2,10 +2,10 @@ import { StyleSheet } from "react-native";
 
 import { theme } from "../../../../styles/theme";
 
-export const inputTextStyles = StyleSheet.create({
+export const inputTextAreaStyles = StyleSheet.create({
   container: {
     minWidth: 300,
-    minHeight: 130,
+    minHeight: 230,
     gap: theme.spacing["2xs"],
   },
   labelContainer: {
@@ -35,12 +35,13 @@ export const inputTextStyles = StyleSheet.create({
   inputContainer: {
     ...theme.border.radius.sm,
     ...theme.border.width.lg,
+    height: 160,
     borderColor: theme.color.surface.onBasePrimary,
     padding: theme.spacing.md,
     backgroundColor: theme.color.surface.layer,
     gap: theme.spacing.xs,
     flexDirection: "row",
-    alignItems: "center"
+  
   },
   inputContainerFocused: {
     borderColor: theme.color.focus.line,
@@ -54,6 +55,7 @@ export const inputTextStyles = StyleSheet.create({
   },
   input: {
     ...theme.typeography.body.md,
+    textAlignVertical: 'top',
     flex: 2,
     color: theme.color.surface.onBaseSecondary,
   },
