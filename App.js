@@ -44,6 +44,7 @@ import InputPassword from "./src/components/Inputs/InputPassword/InputPassword";
 import InputSelect from "./src/components/Inputs/InputSelect/InputSelect";
 import InputCode from "./src/components/Inputs/InputCode/InputCode";
 import InputDate from "./src/components/Inputs/InputDate/InputDate";
+import InputTime from "./src/components/Inputs/InputTime/InputTime";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -61,7 +62,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <InputDate inputLabel={"input label"} inputName={"date"} helperText={"helper"} />
+      <InputDate inputLabel={"input label"} inputName={"date"}  />
+      <InputTime inputLabel={"input label"} is inputName={"date"}  />
     </View>
   );
 }

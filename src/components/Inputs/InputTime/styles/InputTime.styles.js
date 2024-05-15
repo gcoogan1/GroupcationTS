@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import { theme } from "../../../../styles/theme";
 
-export const inputDateStyles = StyleSheet.create({
+export const inputTimeStyles = StyleSheet.create({
   container: {
     minWidth: 160,
     minHeight: 130,
@@ -48,10 +48,20 @@ export const inputDateStyles = StyleSheet.create({
   },
   input: {
     ...theme.typeography.body.md,
-    width: 110,
     color: theme.color.surface.onBaseSecondary,
   },
   inputDisabled: {
+    color: theme.color.disabled.onBase,
+  },
+  timeZoneButton: {
+    marginRight: theme.spacing.xs,
+    paddingRight: 40
+  },
+  timeZoneText: {
+    ...theme.typeography.body.md,
+    color: theme.color.surface.onBaseSecondary,
+  },
+  timeZoneTextDisabled: {
     color: theme.color.disabled.onBase,
   },
   errorIconContainer: {

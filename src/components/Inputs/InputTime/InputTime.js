@@ -1,12 +1,12 @@
-import { createRef, useState } from "react";
-import { Text, View } from "react-native";
+import { createRef, useMemo, useState } from "react";
+import { Pressable, Text, TouchableOpacity, View } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { TextInputMask } from "react-native-masked-text";
 
 import { theme } from "../../../styles/theme";
-import { inputDateStyles } from "./styles/InputDate.styles";
+import { inputTimeStyles } from "./styles/InputTime.styles";
 import Icon from "../../Icon/Icon";
-import Date from "../../../../assets/icons/Date.svg";
+import Time from "../../../../assets/icons/Time.svg";
 import Error from "../../../../assets/icons/Error.svg";
 
 /**
@@ -19,25 +19,34 @@ import Error from "../../../../assets/icons/Error.svg";
  * @returns {ReactNode} Renders a input date field.
  *
  * @example
- * <InputDate
+ * <InputTime
  *  inputLabel={"input label"}
  *  inputName={"date"}
  *  helperText={"helper"}
  *  inputError
  * />
- *
  */
-const InputDate = ({
+const InputTime = ({
   inputName,
   inputLabel,
   helperText,
   isDisabled,
   inputError,
 }) => {
-  const [date, setDate] = useState();
+  const [time, setTime] = useState("");
+  const [AM, setAM] = useState(true);
+  const startsWithTwo = time[0] === "2";
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = createRef();
   const { control } = useForm();
+
+  const mask = [
+    /[0-2]/,
+    startsWithTwo ? /[0-3]/ : /[0-9]/,
+    ":",
+    /[0-5]/,
+    /[0-9]/,
+  ];
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -48,13 +57,13 @@ const InputDate = ({
   };
 
   return (
-    <View style={inputDateStyles.container}>
-      <View style={inputDateStyles.labelContainer}>
+    <View style={inputTimeStyles.container}>
+      <View style={inputTimeStyles.labelContainer}>
         <Text
           style={[
-            inputDateStyles.label,
-            isDisabled && inputDateStyles.labelDisabled,
-            inputError && inputDateStyles.labelError,
+            inputTimeStyles.label,
+            isDisabled && inputTimeStyles.labelDisabled,
+            inputError && inputTimeStyles.labelError,
           ]}
         >
           {inputLabel}
@@ -68,14 +77,14 @@ const InputDate = ({
         render={({ field: { onChange, onBlur, value } }) => (
           <View
             style={[
-              inputDateStyles.inputContainer,
-              isFocused && inputDateStyles.inputContainerFocused,
-              inputError && inputDateStyles.inputContainerError,
-              isDisabled && inputDateStyles.inputContainerDisabled,
+              inputTimeStyles.inputContainer,
+              isFocused && inputTimeStyles.inputContainerFocused,
+              inputError && inputTimeStyles.inputContainerError,
+              isDisabled && inputTimeStyles.inputContainerDisabled,
             ]}
           >
             <Icon size={"lg"}>
-              <Date
+              <Time
                 color={
                   !isDisabled
                     ? theme.color.surface.onBasePrimary
@@ -85,20 +94,37 @@ const InputDate = ({
             </Icon>
             <TextInputMask
               ref={inputRef}
-              placeholder="MM/DD/YYYY"
+              maxLength={5}
+              placeholder="12:00"
               type={"datetime"}
               options={{
-                format: "MM/DD/YYYY",
+                format: "HH:mm",
               }}
               onBlur={handleBlur}
               onFocus={handleFocus}
-              value={date}
+              mask={mask}
+              value={time}
               onChangeText={(text) => {
-                setDate(text);
+                setTime(text);
               }}
-              style={[inputDateStyles.input, isDisabled && inputDateStyles.inputDisabled]}
+              style={inputTimeStyles.input}
             />
-            <View style={inputDateStyles.errorIconContainer}>
+            <Pressable
+              onPress={() => setAM(!AM)}
+              style={inputTimeStyles.timeZoneButton}
+              isDisabled={isDisabled}
+            >
+              <Text
+                style={[
+                  inputTimeStyles.timeZoneText,
+                  !time && { opacity: 0.6 },
+                  isDisabled && inputTimeStyles.timeZoneTextDisabled,
+                ]}
+              >
+                {!!AM ? "AM" : "PM"}
+              </Text>
+            </Pressable>
+            <View style={inputTimeStyles.errorIconContainer}>
               {!!inputError && (
                 <Icon>
                   <Error color={theme.color.error.base} />
@@ -112,18 +138,18 @@ const InputDate = ({
       {!!helperText && (
         <Text
           style={[
-            inputDateStyles.helperText,
-            isDisabled && inputDateStyles.helperTextDisabled,
+            inputTimeStyles.helperText,
+            isDisabled && inputTimeStyles.helperTextDisabled,
           ]}
         >
           {helperText}
         </Text>
       )}
       {!!inputError && (
-        <Text style={inputDateStyles.errorText}>This is required.</Text>
+        <Text style={inputTimeStyles.errorText}>This is required.</Text>
       )}
     </View>
   );
 };
 
-export default InputDate;
+export default InputTime;
