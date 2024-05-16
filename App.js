@@ -47,6 +47,7 @@ import InputDate from "./src/components/Inputs/InputDate/InputDate";
 import InputTime from "./src/components/Inputs/InputTime/InputTime";
 import InputTextArea from "./src/components/Inputs/InputTextArea/InputTextArea";
 import InputCurrency from "./src/components/Inputs/InputCurrency/InputCurrency";
+import InputNumber from "./src/components/Inputs/InputNumber/InputNumber";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -78,7 +79,8 @@ export default function App() {
         isDisabled={disabledState}
         helperText={"helper text"}
       /> */}
-      <InputCurrency
+      <InputNumber
+      // inputError
         inputName={"input name"}
         inputLabel={"input label"}
         placeholder={"Placeholder Text"}

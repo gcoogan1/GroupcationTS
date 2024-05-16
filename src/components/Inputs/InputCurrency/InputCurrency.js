@@ -124,17 +124,17 @@ const InputCurrency = ({
               value={value}
               editable={!isDisabled}
             />
+            {!!inputError && (
+              <Icon>
+                <Error color={theme.color.error.base} />
+              </Icon>
+            )}
             <InlineButton
               onPress={openModal}
               iconRight={<Dropdown color={theme.color.surface.onBasePrimary} />}
             >
               {currency.code}
             </InlineButton>
-            {!!inputError && (
-              <Icon>
-                <Error color={theme.color.error.base} />
-              </Icon>
-            )}
           </View>
         )}
         name={inputName}
