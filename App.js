@@ -46,6 +46,7 @@ import InputCode from "./src/components/Inputs/InputCode/InputCode";
 import InputDate from "./src/components/Inputs/InputDate/InputDate";
 import InputTime from "./src/components/Inputs/InputTime/InputTime";
 import InputTextArea from "./src/components/Inputs/InputTextArea/InputTextArea";
+import InputCurrency from "./src/components/Inputs/InputCurrency/InputCurrency";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -66,7 +67,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <InputDate inputLabel={"input label"} inputName={"date"} />
+      {/* <InputDate inputLabel={"input label"} inputName={"date"} />
       <InputTime inputLabel={"input label"} inputName={"date"} />
       <InputTextArea
         placeholder={"placeholder text"}
@@ -76,6 +77,13 @@ export default function App() {
         showClear
         isDisabled={disabledState}
         helperText={"helper text"}
+      /> */}
+      <InputCurrency
+        inputName={"input name"}
+        inputLabel={"input label"}
+        placeholder={"Placeholder Text"}
+        helperText={"helper text"}
+        isDisabled={disabledState}
       />
     </View>
   );

@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import { theme } from "../../../../styles/theme";
 
-export const inputSelectStyles = StyleSheet.create({
+export const inputCurrencyStyles = StyleSheet.create({
   container: {
     minWidth: 300,
     minHeight: 130,
@@ -11,6 +11,8 @@ export const inputSelectStyles = StyleSheet.create({
   labelContainer: {
     ...theme.border.width.lg,
     borderColor: "transparent",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   label: {
     ...theme.typeography.body.mdBold,
@@ -23,13 +25,22 @@ export const inputSelectStyles = StyleSheet.create({
   labelDisabled: {
     color: theme.color.disabled.onBase,
   },
+  currencySymbol: {
+    ...theme.typeography.body.mdBold,
+    color: theme.color.surface.onBasePrimary
+  },
   inputContainer: {
     ...theme.border.radius.sm,
     ...theme.border.width.lg,
     borderColor: theme.color.surface.onBasePrimary,
+    padding: theme.spacing.md,
     backgroundColor: theme.color.surface.layer,
     gap: theme.spacing.xs,
-    justifyContent: 'center'
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  inputContainerFocused: {
+    borderColor: theme.color.focus.line,
   },
   inputContainerError: {
     borderColor: theme.color.error.base,
@@ -38,19 +49,12 @@ export const inputSelectStyles = StyleSheet.create({
     borderColor: theme.color.disabled.base,
     backgroundColor: theme.color.disabled.base,
   },
-  placeholderIconContainer: {
-    position: 'absolute', 
-    paddingLeft: theme.spacing.md
-  },
-  placeholder: {
+  input: {
     ...theme.typeography.body.md,
+    flex: 2,
     color: theme.color.surface.onBaseSecondary,
   },
-  placeholderSelected: {
-    ...theme.typeography.body.md,
-    color: theme.color.surface.onBasePrimary,
-  },
-  placeholderDisabled: {
+  inputDisabled: {
     color: theme.color.disabled.onBase,
   },
   helperText: {
@@ -61,12 +65,27 @@ export const inputSelectStyles = StyleSheet.create({
   helperTextDisabled: {
     color: theme.color.disabled.onBase,
   },
-  errorIcon: {
-    top: 18,
-    right: 36
-  },
   errorText: {
     ...theme.typeography.body.md,
     color: theme.color.error.base,
+  },
+  modalContianer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginTop: 22
+  },
+  modalContent: {
+    height: 300,
+    width: '100%',
+    backgroundColor: theme.color.surface.layer,
+    padding: theme.spacing.md
+  },
+  modalListItem: {
+    padding: theme.spacing.md
+  },
+  modalText: {
+    ...theme.typeography.body.md,
+    color: theme.color.surface.onBaseSecondary,
   }
 });
