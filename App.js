@@ -1,5 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Alert,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import {
   useFonts,
   Rubik_400Regular,
@@ -10,6 +18,7 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
+import { useForm } from "react-hook-form";
 
 import Tag from "./src/components/Tag/Tag";
 import DetailedRow from "./src/components/DetailedRow/DetailedRow";
@@ -28,6 +37,18 @@ import ActivityCost from "./src/components/Activity/ActivityCost/ActivityCost";
 import Avatar from "./src/components/Avatar/Avatar";
 import ActivityHeader from "./src/components/Activity/ActivityHeader/ActivityHeader";
 import ActivityInformation from "./src/components/Activity/ActivityInformation/ActivityInformation";
+import InputSearch from "./src/components/Inputs/InputSearch/InputSearch";
+import { useState } from "react";
+import InputText from "./src/components/Inputs/InputText/InputText";
+import InputPassword from "./src/components/Inputs/InputPassword/InputPassword";
+import InputSelect from "./src/components/Inputs/InputSelect/InputSelect";
+import InputCode from "./src/components/Inputs/InputCode/InputCode";
+import InputDate from "./src/components/Inputs/InputDate/InputDate";
+import InputTime from "./src/components/Inputs/InputTime/InputTime";
+import InputTextArea from "./src/components/Inputs/InputTextArea/InputTextArea";
+import InputCurrency from "./src/components/Inputs/InputCurrency/InputCurrency";
+import InputNumber from "./src/components/Inputs/InputNumber/InputNumber";
+import InputUser from "./src/components/Inputs/InputUser/InputUser";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -39,88 +60,30 @@ export default function App() {
     return null;
   }
 
-  const usersInGroup = [
+  const disabledState = false;
+  const USERS = [
     {
-      // image: 'https://i.pinimg.com/564x/d3/05/d6/d305d6b4957713e981c43d381c12b862.jpg',
-      initials: "gc",
-      userId: "123",
+      name: "Patrick Star",
+      initials: 'PS',
+      avatarImage: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a0/Sandy_Cheeks.svg/440px-Sandy_Cheeks.svg.png',
+      userId: '123'
     },
     {
-      image:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png",
-      initials: "hb",
-      userId: "456",
+      name: "SpongeBob Squarepants",
+      initials: "SS",
+      avatarImage: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/600px-SpongeBob_SquarePants_character.svg.png?20231203073904',
+      userId: '455'
     },
-    {
-      image:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png",
-      initials: "hb",
-      userId: "456",
-    },
-    {
-      image:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png",
-      initials: "hb",
-      userId: "456",
-    },
-    {
-      image:
-        "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png",
-      initials: "hb",
-      userId: "456",
-    },
-  ];
-
-  const users = [
-    {
-      userName: "Patrick Star",
-      avatar: (
-        <Avatar
-          size={"sm"}
-          avatarImage={{
-            uri: "https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png",
-          }}
-        />
-      ),
-      cost: 90,
-    },
-    {
-      userName: "Spongebob Squarepants",
-      avatar: (
-        <Avatar
-          size={"sm"}
-          avatarImage={{
-            uri: "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/600px-SpongeBob_SquarePants_character.svg.png?20231203073904",
-          }}
-        />
-      ),
-      cost: 99999,
-    },
-    {
-      userName: "Sandy Cheeks",
-      avatar: (
-        <Avatar
-          size={"sm"}
-          avatarImage={{
-            uri: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a0/Sandy_Cheeks.svg/440px-Sandy_Cheeks.svg.png",
-          }}
-        />
-      ),
-      cost: 2000,
-    },
+      name: "Sam Buio",
+      initials: "SB",
+      avatarImage: '',
+      userId: '126'
   ];
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <View style={{ width: 370 }}>
-        <ActivityInformation type={'flight'} />
-      </View>
-      {/* <SafeAreaProvider>
-        <NavigationContainer>
-          <GroupcationBottomTabs />
-        </NavigationContainer>
-      </SafeAreaProvider> */}
+      <InputUser isDisabled users={USERS}  />
     </View>
   );
 }
@@ -144,5 +107,9 @@ const styles = StyleSheet.create({
   footerContainer: {
     flex: 1,
     marginHorizontal: theme.spacing.sm,
+  },
+  suggestionItemText: {
+    ...theme.typeography.body.md,
+    color: theme.color.surface.onBasePrimary,
   },
 });

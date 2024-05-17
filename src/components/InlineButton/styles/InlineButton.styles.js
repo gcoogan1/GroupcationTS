@@ -5,8 +5,7 @@ export const defaultInlineStyles = StyleSheet.create({
   button: {
     ...theme.border.radius.full,
     ...theme.border.width.lg,
-    width: '100%',
-    height: '100%',
+    paddingHorizontal: theme.spacing.xs,
     borderColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center',
