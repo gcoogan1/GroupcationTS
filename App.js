@@ -48,6 +48,7 @@ import InputTime from "./src/components/Inputs/InputTime/InputTime";
 import InputTextArea from "./src/components/Inputs/InputTextArea/InputTextArea";
 import InputCurrency from "./src/components/Inputs/InputCurrency/InputCurrency";
 import InputNumber from "./src/components/Inputs/InputNumber/InputNumber";
+import InputUser from "./src/components/Inputs/InputUser/InputUser";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -60,33 +61,29 @@ export default function App() {
   }
 
   const disabledState = false;
-  const data = [
-    { value: "1", label: "one" },
-    { value: "2", label: "two" },
+  const USERS = [
+    {
+      name: "Patrick Star",
+      initials: 'PS',
+      avatarImage: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a0/Sandy_Cheeks.svg/440px-Sandy_Cheeks.svg.png',
+      userId: '123'
+    },
+    {
+      name: "SpongeBob Squarepants",
+      initials: "SS",
+      avatarImage: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/600px-SpongeBob_SquarePants_character.svg.png?20231203073904',
+      userId: '455'
+    },
+      name: "Sam Buio",
+      initials: "SB",
+      avatarImage: '',
+      userId: '126'
   ];
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      {/* <InputDate inputLabel={"input label"} inputName={"date"} />
-      <InputTime inputLabel={"input label"} inputName={"date"} />
-      <InputTextArea
-        placeholder={"placeholder text"}
-        inputLabel={"input label"}
-        inputName="placeholder"
-        showCount
-        showClear
-        isDisabled={disabledState}
-        helperText={"helper text"}
-      /> */}
-      <InputNumber
-      // inputError
-        inputName={"input name"}
-        inputLabel={"input label"}
-        placeholder={"Placeholder Text"}
-        helperText={"helper text"}
-        isDisabled={disabledState}
-      />
+      <InputUser isDisabled users={USERS}  />
     </View>
   );
 }

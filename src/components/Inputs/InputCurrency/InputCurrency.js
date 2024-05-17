@@ -158,7 +158,7 @@ const InputCurrency = ({
         visible={modalVisible}
         onRequestClose={closeModal}
       >
-        <View style={inputCurrencyStyles.modalContianer}>
+        <View style={inputCurrencyStyles.modalContainer}>
           <View style={inputCurrencyStyles.modalContent}>
             <FlatList
               data={CurrencyOptions.CURRENCIES}

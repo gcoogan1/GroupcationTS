@@ -69,7 +69,7 @@ export const inputCurrencyStyles = StyleSheet.create({
     ...theme.typeography.body.md,
     color: theme.color.error.base,
   },
-  modalContianer: {
+  modalContainer: {
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
