@@ -28,6 +28,7 @@ import Avatar from "../../Avatar/Avatar";
       initials: "SB",
       avatarImage: '',
       userId: '126'
+    }
   ];
  * @prop {boolean} isDisabled optional -> disabled state of the input
  * @prop {boolean} inputError optional -> error state of the input
