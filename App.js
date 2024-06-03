@@ -63,10 +63,38 @@ export default function App() {
 
   const disabledState = false;
  
+  const items = [
+    { 
+      itemLabel: 'Item Label', 
+      itemSubLabel: "Item Sub-Label", 
+      itemIcon: <Placeholder color={theme.color.surface.onBasePrimary} /> 
+    },
+    { 
+      itemLabel: 'Item Label', 
+      itemSubLabel: "Item Sub-Label", 
+      itemIcon: <Placeholder color={theme.color.surface.onBasePrimary} /> 
+    },
+    { 
+      itemLabel: 'Item Label', 
+      itemSubLabel: "Item Sub-Label", 
+      itemIcon: <Placeholder color={theme.color.surface.onBasePrimary} /> 
+    },
+    { 
+      itemLabel: 'Item Label', 
+      itemSubLabel: "Item Sub-Label", 
+      itemIcon: <Placeholder color={theme.color.surface.onBasePrimary} /> 
+    },
+    { 
+      itemLabel: 'Item Label', 
+      itemSubLabel: "Item Sub-Label", 
+      itemIcon: <Placeholder color={theme.color.surface.onBasePrimary} /> 
+    }
+  ]
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
+      {/* <SearchList title={"Section Title"} itemList={items} /> */}
       <SearchItem itemLabel={'Item Label'} itemSubLabel={'Item Sub-Label'} itemIcon={<Placeholder color={theme.color.surface.onBasePrimary} />} />
     </View>
   );
