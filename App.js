@@ -50,6 +50,7 @@ import InputCurrency from "./src/components/Inputs/InputCurrency/InputCurrency";
 import InputNumber from "./src/components/Inputs/InputNumber/InputNumber";
 import InputUser from "./src/components/Inputs/InputUser/InputUser";
 import SearchItem from "./src/components/SearchList/SearchItem/SearchItem";
+import UserCard from "./src/components/UserCard/UserCard";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -61,41 +62,14 @@ export default function App() {
     return null;
   }
 
-  const disabledState = false;
- 
-  const items = [
-    { 
-      itemLabel: 'Item Label', 
-      itemSubLabel: "Item Sub-Label", 
-      itemIcon: <Placeholder color={theme.color.surface.onBasePrimary} /> 
-    },
-    { 
-      itemLabel: 'Item Label', 
-      itemSubLabel: "Item Sub-Label", 
-      itemIcon: <Placeholder color={theme.color.surface.onBasePrimary} /> 
-    },
-    { 
-      itemLabel: 'Item Label', 
-      itemSubLabel: "Item Sub-Label", 
-      itemIcon: <Placeholder color={theme.color.surface.onBasePrimary} /> 
-    },
-    { 
-      itemLabel: 'Item Label', 
-      itemSubLabel: "Item Sub-Label", 
-      itemIcon: <Placeholder color={theme.color.surface.onBasePrimary} /> 
-    },
-    { 
-      itemLabel: 'Item Label', 
-      itemSubLabel: "Item Sub-Label", 
-      itemIcon: <Placeholder color={theme.color.surface.onBasePrimary} /> 
-    }
-  ]
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
-      {/* <SearchList title={"Section Title"} itemList={items} /> */}
-      <SearchItem itemLabel={'Item Label'} itemSubLabel={'Item Sub-Label'} itemIcon={<Placeholder color={theme.color.surface.onBasePrimary} />} />
+      <UserCard 
+        fullname={"user name"}  
+        userInitials={"CG"} 
+        userImage={'https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png'} 
+      />
     </View>
   );
 }
