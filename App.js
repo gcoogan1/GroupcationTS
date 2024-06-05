@@ -52,6 +52,7 @@ import InputUser from "./src/components/Inputs/InputUser/InputUser";
 import SearchItem from "./src/components/SearchList/SearchItem/SearchItem";
 import UserCard from "./src/components/UserCard/UserCard";
 import SegmentedRadio from "./src/components/SelectInputs/SegmentedRadio/SegmentedRadio";
+import SelectBox from "./src/components/SelectInputs/SelectBox/SelectBox";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -63,27 +64,14 @@ export default function App() {
     return null;
   }
 
-  const radioOptions = [
-    {
-      radioLabel: "option",
-      radioValue: "1",
-    },
-    {
-      radioLabel: "option",
-      radioValue: "2",
-    },
-    {
-      radioLabel: "option",
-      radioValue: "3",
-    },
-  ];
-
   return (
     <View style={styles.container}>
-      <SegmentedRadio
-        radioOptions={radioOptions}
-        inputLabel={"Input Label"}
-        helperText={"Descriptive Text"}
+      <SelectBox 
+         onSelectPress={() => console.log("pressed")}
+         selectIcon={<Placeholder color="black" />}
+         selectLabel="Input Label"
+         selectSubLabel="sublabel"
+         isSelected
       />
     </View>
   );
