@@ -18,6 +18,7 @@ const SocialLoginButton = () => {
   const loginWithGoggle = () => {
     console.log("login with google")
   }
+  
   return (
     <Pressable 
       onPress={loginWithGoggle}

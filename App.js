@@ -51,6 +51,7 @@ import InputNumber from "./src/components/Inputs/InputNumber/InputNumber";
 import InputUser from "./src/components/Inputs/InputUser/InputUser";
 import SearchItem from "./src/components/SearchList/SearchItem/SearchItem";
 import UserCard from "./src/components/UserCard/UserCard";
+import SegmentedRadio from "./src/components/SelectInputs/SegmentedRadio/SegmentedRadio";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -62,13 +63,27 @@ export default function App() {
     return null;
   }
 
+  const radioOptions = [
+    {
+      radioLabel: "option",
+      radioValue: "1",
+    },
+    {
+      radioLabel: "option",
+      radioValue: "2",
+    },
+    {
+      radioLabel: "option",
+      radioValue: "3",
+    },
+  ];
 
   return (
     <View style={styles.container}>
-      <UserCard 
-        fullname={"user name"}  
-        userInitials={"CG"} 
-        userImage={'https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png'} 
+      <SegmentedRadio
+        radioOptions={radioOptions}
+        inputLabel={"Input Label"}
+        helperText={"Descriptive Text"}
       />
     </View>
   );
