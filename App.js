@@ -54,6 +54,8 @@ import UserCard from "./src/components/UserCard/UserCard";
 import SegmentedRadio from "./src/components/SelectInputs/SegmentedRadio/SegmentedRadio";
 import SelectBox from "./src/components/SelectInputs/SelectBox/SelectBox";
 import SelectButton from "./src/components/SelectInputs/SelectButton/SelectButton";
+import SelectSmallBox from "./src/components/SelectInputs/SelectHorizontal/SelectSmallBox/SelectSmallBox";
+import SelectHorizontal from "./src/components/SelectInputs/SelectHorizontal/SelectHorizontal";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -65,13 +67,26 @@ export default function App() {
     return null;
   }
 
+  const options = [
+    {
+      label: 'option',
+      value: 1,
+    },
+    {
+      label: 'option',
+      value: 2,
+    },
+    {
+      label: 'option',
+      value: 3,
+    }
+  ];
+
   return (
     <View style={styles.container}>
-      <SelectButton 
-         onSelectPress={() => console.log("pressed")}
-          // multiSelect
-          // isSelected
-          isDisabled
+      <SelectHorizontal 
+        selectOptions={options}
+        inputLabel={"Input Label"}
       />
     </View>
   );

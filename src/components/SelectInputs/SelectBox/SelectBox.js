@@ -4,7 +4,7 @@ import Icon from "../../Icon/Icon";
 import { selectBoxStyles } from "./SelectBox.styles";
 
 /**
- * This component renders a select box with different styles for the box is selected.
+ * This component renders a select box with different styles for when the box is selected.
  * @prop {boolean} isSelected optional -> selected state of select box
  * @prop {function} onSelectPress required -> event to be fired when the box is pressed
  * @prop {component} selectIcon required -> icon inside select box
