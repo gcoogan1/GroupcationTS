@@ -53,6 +53,7 @@ import SearchItem from "./src/components/SearchList/SearchItem/SearchItem";
 import UserCard from "./src/components/UserCard/UserCard";
 import SegmentedRadio from "./src/components/SelectInputs/SegmentedRadio/SegmentedRadio";
 import SelectBox from "./src/components/SelectInputs/SelectBox/SelectBox";
+import SelectButton from "./src/components/SelectInputs/SelectButton/SelectButton";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -66,12 +67,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <SelectBox 
+      <SelectButton 
          onSelectPress={() => console.log("pressed")}
-         selectIcon={<Placeholder color="black" />}
-         selectLabel="Input Label"
-         selectSubLabel="sublabel"
-         isSelected
+          // multiSelect
+          // isSelected
+          isDisabled
       />
     </View>
   );
