@@ -11,12 +11,8 @@ import RadioUnselected from "../../../../assets/icons/Radio_Unselected.svg";
  * This component renders a select or multiSelect button with different styles.
  * @prop {boolean} multiSelect optional -> if true the button will be multi-selectable
  * @prop {boolean} isSelected optional -> selected state of select button
- * @prop {function} onSelectPress optional -> event to be fired when the select button is pressed
- * @prop {function} onMultiSelectPress optional -> event to be fired when the multiSelect button is pressed
+ * @prop {function} onSelectPress optional -> event to be fired when the button is pressed
  * @prop {boolean} isDisabled optional -> disabled state of select box
- * 
- * @important -> onSelectPress should only be passed when the button is NOT multiSelect, else
- * onMultiSelectPress should be passed. 
  * 
  * @returns {ReactElement} Renders a Select Button.
  *
@@ -30,7 +26,6 @@ const SelectButton = ({
   multiSelect,
   isSelected,
   onSelectPress,
-  onMultiSelectPress,
   isDisabled
 }) => {
   const iconColor = !isDisabled
@@ -45,7 +40,8 @@ const SelectButton = ({
             selectButtonStyles.multiSelectContainer,
             focused && selectButtonStyles.containerFocused,
           ]}
-          onPress={onMultiSelectPress}
+          onPress={onSelectPress}
+          disabled={isDisabled}
         >
           {isSelected ? (
             <CheckboxSelected color={iconColor} />
@@ -60,6 +56,7 @@ const SelectButton = ({
             focused && selectButtonStyles.containerFocused,
           ]}
           onPress={onSelectPress}
+          disabled={isDisabled}
         >
           {isSelected ? (
             <Radio color={iconColor} />

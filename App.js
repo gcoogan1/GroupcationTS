@@ -56,6 +56,7 @@ import SelectBox from "./src/components/SelectInputs/SelectBox/SelectBox";
 import SelectButton from "./src/components/SelectInputs/SelectButton/SelectButton";
 import SelectSmallBox from "./src/components/SelectInputs/SelectHorizontal/SelectSmallBox/SelectSmallBox";
 import SelectHorizontal from "./src/components/SelectInputs/SelectHorizontal/SelectHorizontal";
+import SelectItem from "./src/components/SelectInputs/SelectItem/SelectItem";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -69,24 +70,27 @@ export default function App() {
 
   const options = [
     {
-      label: 'option',
+      label: "option",
       value: 1,
     },
     {
-      label: 'option',
+      label: "option",
       value: 2,
     },
     {
-      label: 'option',
+      label: "option",
       value: 3,
-    }
+    },
   ];
 
   return (
     <View style={styles.container}>
-      <SelectHorizontal 
-        selectOptions={options}
-        inputLabel={"Input Label"}
+      <SelectItem
+        multiSelect
+        isSelected
+        itemLabel={"Option label"}
+        onSelectPress={() => console.log("select pressed")}
+        onItemPress={() => console.log("item pressed")}
       />
     </View>
   );
