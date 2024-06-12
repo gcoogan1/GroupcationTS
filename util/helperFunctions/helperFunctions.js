@@ -14,3 +14,16 @@ export const timeIsValid = (timeString) => {
   const parsedTime = parse(timeString, "HH:mm", new Date());
   return isValid(parsedTime) && format(parsedTime, "HH:mm") === timeString;
 };
+
+export const existsInArray = (string, array) => {
+  return array.includes(string);
+};
+
+export const objectKeysMatch = (obj1, obj2) => {
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+
+  return (
+    keys1.length === keys2.length && keys1.every((key) => keys2.includes(key))
+  );
+};

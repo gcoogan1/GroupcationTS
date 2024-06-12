@@ -4,6 +4,8 @@ import { avatarStyles } from "./styles/Avatar.styles";
 import AvatarConstants from "./constants/Avatar.constants";
 import { theme } from "../../styles/theme";
 
+//TODO: ADD valid URI check for image
+
 /**
  * This component renders an avatar with either a image or initials. If no props are passed
  * the default will be a md avatar with the initials AZ.
@@ -33,6 +35,7 @@ const Avatar = ({ avatarImage, size, initials, numOfUsers }) => {
               : AvatarConstants.AVATAR_SIZES_STYLE["md"],
             avatarStyles.image,
           ]}
+          resizeMode="center"
         />
       ) : (
         <View

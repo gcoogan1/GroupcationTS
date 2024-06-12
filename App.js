@@ -51,6 +51,13 @@ import InputNumber from "./src/components/Inputs/InputNumber/InputNumber";
 import InputUser from "./src/components/Inputs/InputUser/InputUser";
 import SearchItem from "./src/components/SearchList/SearchItem/SearchItem";
 import UserCard from "./src/components/UserCard/UserCard";
+import SegmentedRadio from "./src/components/SelectInputs/SegmentedRadio/SegmentedRadio";
+import SelectBox from "./src/components/SelectInputs/SelectBox/SelectBox";
+import SelectButton from "./src/components/SelectInputs/SelectButton/SelectButton";
+import SelectSmallBox from "./src/components/SelectInputs/SelectHorizontal/SelectSmallBox/SelectSmallBox";
+import SelectHorizontal from "./src/components/SelectInputs/SelectHorizontal/SelectHorizontal";
+import SelectItem from "./src/components/SelectInputs/SelectItem/SelectItem";
+import SelectList from "./src/components/SelectInputs/SelectList/SelectList";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -62,14 +69,63 @@ export default function App() {
     return null;
   }
 
+  const options = [
+    {
+      label: "option",
+      value: 1,
+    },
+    {
+      label: "option",
+      value: 2,
+    },
+    {
+      label: "option",
+      value: 3,
+    },
+  ];
+
+  const ITEMS = [ 
+    {
+      itemLabel: 'item label',
+      itemValue: '1',
+      isDisabled: true
+    },
+    {
+      itemLabel: 'item label',
+      itemValue: '2',
+      isDisabled: true
+    },
+    {
+      itemLabel: 'item label',
+      itemValue: '3',
+      isDisabled: false
+    }
+  ]
+
+  // const ITEMS = [
+  //   {
+  //     fullName: 'User Label',
+  //     userAvatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrh9s9H33r-TzvDvyMcOrjEHleHO5ER_iaEA&s',
+  //     userInitials: 'HG',
+  //       isDisabled: false
+  //   },
+  //   {
+  //     fullName: 'User There',
+  //     userAvatar: 'https://static.wikia.nocookie.net/p__/images/9/94/Ger2017.png/revision/latest/scale-to-width/360?cb=20170501144649&path-prefix=protagonist',
+  //     userInitials: 'VH',
+  //       isDisabled: false
+  //   },
+  //   {
+  //     fullName: 'User Name',
+  //     userAvatar: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2a/HeyArnold%21.jpg/155px-HeyArnold%21.jpg',
+  //     userInitials: 'OP',
+  //       isDisabled: true
+  //   }
+  // ]
 
   return (
     <View style={styles.container}>
-      <UserCard 
-        fullname={"user name"}  
-        userInitials={"CG"} 
-        userImage={'https://upload.wikimedia.org/wikipedia/en/thumb/3/33/Patrick_Star.svg/440px-Patrick_Star.svg.png'} 
-      />
+      <SelectList type={'select'} itemList={ITEMS} />
     </View>
   );
 }
