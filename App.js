@@ -57,6 +57,7 @@ import SelectButton from "./src/components/SelectInputs/SelectButton/SelectButto
 import SelectSmallBox from "./src/components/SelectInputs/SelectHorizontal/SelectSmallBox/SelectSmallBox";
 import SelectHorizontal from "./src/components/SelectInputs/SelectHorizontal/SelectHorizontal";
 import SelectItem from "./src/components/SelectInputs/SelectItem/SelectItem";
+import SelectList from "./src/components/SelectInputs/SelectList/SelectList";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -83,15 +84,48 @@ export default function App() {
     },
   ];
 
+  const ITEMS = [ 
+    {
+      itemLabel: 'item label',
+      itemValue: '1',
+      isDisabled: true
+    },
+    {
+      itemLabel: 'item label',
+      itemValue: '2',
+      isDisabled: true
+    },
+    {
+      itemLabel: 'item label',
+      itemValue: '3',
+      isDisabled: false
+    }
+  ]
+
+  // const ITEMS = [
+  //   {
+  //     fullName: 'User Label',
+  //     userAvatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrh9s9H33r-TzvDvyMcOrjEHleHO5ER_iaEA&s',
+  //     userInitials: 'HG',
+  //       isDisabled: false
+  //   },
+  //   {
+  //     fullName: 'User There',
+  //     userAvatar: 'https://static.wikia.nocookie.net/p__/images/9/94/Ger2017.png/revision/latest/scale-to-width/360?cb=20170501144649&path-prefix=protagonist',
+  //     userInitials: 'VH',
+  //       isDisabled: false
+  //   },
+  //   {
+  //     fullName: 'User Name',
+  //     userAvatar: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2a/HeyArnold%21.jpg/155px-HeyArnold%21.jpg',
+  //     userInitials: 'OP',
+  //       isDisabled: true
+  //   }
+  // ]
+
   return (
     <View style={styles.container}>
-      <SelectItem
-        multiSelect
-        isSelected
-        itemLabel={"Option label"}
-        onSelectPress={() => console.log("select pressed")}
-        onItemPress={() => console.log("item pressed")}
-      />
+      <SelectList type={'select'} itemList={ITEMS} />
     </View>
   );
 }
