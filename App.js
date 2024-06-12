@@ -58,6 +58,8 @@ import SelectSmallBox from "./src/components/SelectInputs/SelectHorizontal/Selec
 import SelectHorizontal from "./src/components/SelectInputs/SelectHorizontal/SelectHorizontal";
 import SelectItem from "./src/components/SelectInputs/SelectItem/SelectItem";
 import SelectList from "./src/components/SelectInputs/SelectList/SelectList";
+import activtyConstants from "./src/components/Activity/constants/Activity.constants";
+import ItineraryDay from "./src/components/ItineraryDay/ItineraryDay";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -69,63 +71,13 @@ export default function App() {
     return null;
   }
 
-  const options = [
-    {
-      label: "option",
-      value: 1,
-    },
-    {
-      label: "option",
-      value: 2,
-    },
-    {
-      label: "option",
-      value: 3,
-    },
-  ];
 
-  const ITEMS = [ 
-    {
-      itemLabel: 'item label',
-      itemValue: '1',
-      isDisabled: true
-    },
-    {
-      itemLabel: 'item label',
-      itemValue: '2',
-      isDisabled: true
-    },
-    {
-      itemLabel: 'item label',
-      itemValue: '3',
-      isDisabled: false
-    }
-  ]
 
-  // const ITEMS = [
-  //   {
-  //     fullName: 'User Label',
-  //     userAvatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrh9s9H33r-TzvDvyMcOrjEHleHO5ER_iaEA&s',
-  //     userInitials: 'HG',
-  //       isDisabled: false
-  //   },
-  //   {
-  //     fullName: 'User There',
-  //     userAvatar: 'https://static.wikia.nocookie.net/p__/images/9/94/Ger2017.png/revision/latest/scale-to-width/360?cb=20170501144649&path-prefix=protagonist',
-  //     userInitials: 'VH',
-  //       isDisabled: false
-  //   },
-  //   {
-  //     fullName: 'User Name',
-  //     userAvatar: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2a/HeyArnold%21.jpg/155px-HeyArnold%21.jpg',
-  //     userInitials: 'OP',
-  //       isDisabled: true
-  //   }
-  // ]
+  const { ACTIVITIES } = activtyConstants;
 
   return (
     <View style={styles.container}>
-      <SelectList type={'select'} itemList={ITEMS} />
+      <ItineraryDay day={1} date={'Friday, Dec 13th'} activities={ACTIVITIES}/>
     </View>
   );
 }

@@ -10,6 +10,11 @@ import Event_Inverse from "../../../../assets/pictograms/Event_Inverse.svg";
 import Note from "../../../../assets/pictograms/Note.svg";
 import Note_Inverse from "../../../../assets/pictograms/Note_Inverse.svg";
 
+/**
+ * There are 5 acceptable objects based on activity type.
+ * Activity types include: "flight", "stay", "rental", "event" or "note"
+ * See below for reference
+ */
 const ACTIVITIES = [{
     type: "flight",
     pictogram: <Flight />,
