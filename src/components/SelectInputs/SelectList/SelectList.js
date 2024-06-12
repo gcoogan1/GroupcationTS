@@ -13,7 +13,7 @@ import { useState } from "react";
 /**
  * This component renders a list if select items.
  * @prop {string} type required -> sets the type of select item to display. ('user', 'multiSelect', 'select')
- * @prop {array} itemList required -> array of objects that container select items data.
+ * @prop {array} itemList required -> array of objects that contain select items data.
  * See reference file for object and type options.
  * Ex.
  *  const ITEMS = [ 
