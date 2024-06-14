@@ -35,7 +35,7 @@ const InputDate = ({
   initialDate,
   helperText,
   isDisabled,
-  inputError,
+  inputError
 }) => {
   const [date, setDate] = useState();
   const [isFocused, setIsFocused] = useState(false);

@@ -32,8 +32,9 @@ const Navbar = ({
   onClosePress,
   onBackPress,
   onSharePress,
-  onSettingsPress,
+  onSettingsPress
 }) => {
+
   const NAVBAR_COLOR = theme.color.surface.onBasePrimary;
 
   const iconButton = (icon, iconOnPress) => {

@@ -32,6 +32,7 @@ const DatePicker = ({
   const [startDate, setStartDate] = useState(initialStartDate);
   const [endDate, setEndDate] = useState(validEndDate);
 
+
   const setDateRanges = (date) => {
     if (!!startDate) {
       if (isBefore(date, startDate)) {
@@ -84,12 +85,15 @@ const DatePicker = ({
     }
   }, [startDate, endDate]);
 
+  console.log(startDate, endDate);
+
   return (
-    <View style={{ height: 300 }}>
+    <View>
       <CalendarList
         theme={{
           ...DatePickerConstants.THEME_STYLES,
         }}
+        current={startDate}
         calendarWidth={300}
         markingType={"period"}
         markedDates={getDateRanges}

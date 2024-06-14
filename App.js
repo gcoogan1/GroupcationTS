@@ -20,6 +20,7 @@ import {
 } from "react-native-safe-area-context";
 import { useForm } from "react-hook-form";
 
+
 import Tag from "./src/components/Tag/Tag";
 import DetailedRow from "./src/components/DetailedRow/DetailedRow";
 import Button from "./src/components/Button/Button";
@@ -60,7 +61,10 @@ import SelectItem from "./src/components/SelectInputs/SelectItem/SelectItem";
 import SelectList from "./src/components/SelectInputs/SelectList/SelectList";
 import activtyConstants from "./src/components/Activity/constants/Activity.constants";
 import ItineraryDay from "./src/components/ItineraryDay/ItineraryDay";
-import InputRow from "./src/components/InputRow/InputRow";
+import SearchList from "./src/components/SearchList/SearchList";
+import UserInput from "./src/components/UserInput/UserInput";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import TestScreen from "./src/screens/TestScreen";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -72,30 +76,23 @@ export default function App() {
     return null;
   }
 
+  const TopTabs = createMaterialTopTabNavigator()
 
-
-  const dateOne = {
-    name: 'arrival',
-    label: 'Input label',
-    initialDate: null,
-    helperText: 'helper text',
-    isDisabled: false,
-    isError: false
-  }
-
-  const dateTwo = {
-    name: 'departure',
-    label: 'Input label',
-    initialDate: '04/16/2024',
-    helperText: 'helper text',
-    isDisabled: false,
-    isError: false
+  const TopNavigation = () => {
+    return (
+      <TopTabs.Navigator
+      sceneContainerStyle={{ backgroundColor: '#fffff' }}
+       tabBar={(props) => <Navbar type={'userInput'} pageTitle={'Input Title'} {...props} />}
+      >
+        <TopTabs.Screen component={TestScreen} name="UserInputScreen" />
+      </TopTabs.Navigator>
+    )
   }
 
   return (
-    <View style={styles.container}>
-      <InputRow dateOneData={dateOne} dateTwoData={dateTwo} />
-    </View>
+    <NavigationContainer>
+        <TopNavigation />
+    </NavigationContainer>
   );
 }
 
@@ -104,8 +101,9 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 50,
     marginHorizontal: 0,
-    backgroundColor: "#fffff",
-    justifyContent: "center",
+
+    // backgroundColor: "#fffff",
+    // justifyContent: "center",
     alignItems: "center",
     // // flexDirection: "row",
     // gap: 20,

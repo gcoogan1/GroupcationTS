@@ -8,7 +8,7 @@ import {
 } from "../../../../util/helperFunctions/helperFunctions";
 import { useState } from "react";
 
-//TODO: Add error message and write a function to check all objects in the array match
+//TODO: Add error message and write a function to check all objects in the array match. Add userId to use as a value instead of fullname for user.
 
 /**
  * This component renders a list if select items.

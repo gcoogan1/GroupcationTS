@@ -6,7 +6,7 @@ export const navBarStyles = StyleSheet.create({
     width: "100%",
     minWidth: 300,
     backgroundColor: theme.color.surface.base,
-    paddingTop: 56,
+    // paddingTop: 56,
     paddingBottom: theme.spacing.md,
     paddingHorizontal: theme.spacing.md,
   },

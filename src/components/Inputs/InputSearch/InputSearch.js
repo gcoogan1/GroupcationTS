@@ -1,31 +1,40 @@
-import React, { useState } from "react";
+import React, { createRef, useState } from "react";
 import { View, TextInput, TouchableOpacity, FlatList } from "react-native";
 
 import Icon from "../../Icon/Icon";
 import Search from "../../../../assets/icons/Search.svg";
+import Close from "../../../../assets/icons/Close.svg";
 import { theme } from "../../../styles/theme";
 import { inputSearchStyles } from "./styles/InputSearch.styles";
+import SearchList from "../../SearchList/SearchList";
+import { Text } from "react-native";
 
 /**
  * This component renders a search input based on selections (suggested search list).
  * @prop {array} data required -> array of objects containing the search list of suggestions. 
+ * ex.
+ * const mockSuggestions = [
+   { itemLabel: 'Paris' },
+   { itemLabel: 'Hong kong'}
+  ];
  * @prop {function} onSearch required -> event to be fired when search is pressed
- * @prop {function} selectionItem required -> event that returns a component to render as the 
- * selection item. The function recieves an item prop that will contain the selection item data.
+ * @prop {string} sectionTitle required -> title of search list
+ * @prop {string} emptyText required -> text to be shown when the search list is not displayed
  * @prop {boolean} isDisabled optional -> disabled state of the input
  * @returns {ReactNode} Renders a select input field.
  * 
  * @example 
  * <InputSearch
-    onSearch={handleSearch}
     data={mockSuggestions}
-    selectionItem={(item) => suggestionItem(item)}
+    sectionTitle={'section title'} 
+    emptyText={"Empty State Text"}
    />
  */
-const InputSearch = ({ data, onSearch, selectionItem, isDisabled }) => {
+const InputSearch = ({ data, onSearch, sectionTitle, emptyText, isDisabled }) => {
   const [query, setQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [selections, setSelections] = useState([]);
+  const inputRef = createRef();
 
   const handleSearch = () => {
     if (query.trim() !== "") {
@@ -39,13 +48,13 @@ const InputSearch = ({ data, onSearch, selectionItem, isDisabled }) => {
 
     // Filter selections by text
     const filteredSelections = data.filter((item) =>
-      item.text.toLowerCase().includes(text.toLowerCase())
+      item.itemLabel.toLowerCase().includes(text.toLowerCase())
     );
     setSelections(filteredSelections);
   };
 
   const handleSelectSelection = (item) => {
-    setQuery(item.text);
+    setQuery(item.itemLabel);
     setSelections([]);
   };
 
@@ -57,14 +66,10 @@ const InputSearch = ({ data, onSearch, selectionItem, isDisabled }) => {
     setIsFocused(false);
   };
 
-  const renderSelectionItem = ({ item }) => (
-    <TouchableOpacity
-      style={inputSearchStyles.selectionItem}
-      onPress={() => handleSelectSelection(item)}
-    >
-      {selectionItem(item)}
-    </TouchableOpacity>
-  );
+  const handleClear = () => {
+    inputRef.current.clear()
+    setSelections([]);
+  }
 
   return (
     <View style={inputSearchStyles.container}>
@@ -87,6 +92,7 @@ const InputSearch = ({ data, onSearch, selectionItem, isDisabled }) => {
           </Icon>
         </TouchableOpacity>
         <TextInput
+          ref={inputRef}
           editable={isDisabled}
           style={[
             inputSearchStyles.input,
@@ -99,15 +105,28 @@ const InputSearch = ({ data, onSearch, selectionItem, isDisabled }) => {
           onChangeText={handleInputChange}
           onSubmitEditing={handleSearch}
         />
+         <TouchableOpacity onPress={handleClear}>
+          <Icon>
+            <Close
+              color={theme.color.disabled.onBase}
+            />
+          </Icon>
+        </TouchableOpacity>
       </View>
-      {selections.length > 0 && (
-        <FlatList
-          data={selections}
-          renderItem={renderSelectionItem}
-          keyExtractor={(item) => item.id.toString()}
-          style={inputSearchStyles.selectionsList}
-        />
-      )}
+        <View style={inputSearchStyles.listContainer}>
+          {selections.length > 0 ? (
+            <SearchList
+              itemList={selections}
+              title={sectionTitle}
+              onSelect={handleSelectSelection}
+              listStyles={inputSearchStyles.selectionsList}
+            />
+          ) : (
+            <View style={inputSearchStyles.emptyTextContainer}>
+              <Text style={inputSearchStyles.emptyText}>{emptyText}</Text>
+            </View>
+          )}
+        </View>
     </View>
   );
 };

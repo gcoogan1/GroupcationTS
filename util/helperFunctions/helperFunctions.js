@@ -27,3 +27,5 @@ export const objectKeysMatch = (obj1, obj2) => {
     keys1.length === keys2.length && keys1.every((key) => keys2.includes(key))
   );
 };
+
+export const formatInputDate = (dateStr) => dateStr ? format(parse(dateStr, 'MM/dd/yyyy', new Date()), 'yyyy-MM-dd') : null;
