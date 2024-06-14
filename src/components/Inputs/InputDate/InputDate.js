@@ -1,4 +1,4 @@
-import { createRef, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { TextInputMask } from "react-native-masked-text";
@@ -13,6 +13,7 @@ import Error from "../../../../assets/icons/Error.svg";
  * This component renders a date input with optional helper text.
  * @prop {string} inputName required -> name of input
  * @prop {string} inputLabel required -> label to be displayed
+ * @prop {string} initialDate optional -> initial date to be set ("mm/dd/yyyy")
  * @prop {string} helperText optional -> helper text to be displayed below the input
  * @prop {boolean} isDisabled optional -> disabled state of the input
  * @prop {boolean} inputError optional -> error state of the input
@@ -22,6 +23,7 @@ import Error from "../../../../assets/icons/Error.svg";
  * <InputDate
  *  inputLabel={"input label"}
  *  inputName={"date"}
+ *  initialDate={"03/20/2023"}
  *  helperText={"helper"}
  *  inputError
  * />
@@ -30,6 +32,7 @@ import Error from "../../../../assets/icons/Error.svg";
 const InputDate = ({
   inputName,
   inputLabel,
+  initialDate,
   helperText,
   isDisabled,
   inputError,
@@ -38,6 +41,12 @@ const InputDate = ({
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = createRef();
   const { control } = useForm();
+
+  useEffect(() => {
+    if(initialDate) {
+      setDate(initialDate)
+    }
+  },[initialDate])
 
   const handleFocus = () => {
     setIsFocused(true);
