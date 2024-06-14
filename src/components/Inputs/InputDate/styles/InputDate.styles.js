@@ -4,8 +4,8 @@ import { theme } from "../../../../styles/theme";
 
 export const inputDateStyles = StyleSheet.create({
   container: {
-    minWidth: 160,
-    minHeight: 130,
+    // minWidth: 160,
+    // minHeight: 130,
     gap: theme.spacing["2xs"],
   },
   labelContainer: {
@@ -48,14 +48,14 @@ export const inputDateStyles = StyleSheet.create({
   },
   input: {
     ...theme.typeography.body.md,
-    width: 110,
+    // width: 110,
     color: theme.color.surface.onBaseSecondary,
   },
   inputDisabled: {
     color: theme.color.disabled.onBase,
   },
   errorIconContainer: {
-    width: 20,
+    // width: 20,
   },
   helperText: {
     ...theme.typeography.body.md,

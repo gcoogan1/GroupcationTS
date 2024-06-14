@@ -60,6 +60,7 @@ import SelectItem from "./src/components/SelectInputs/SelectItem/SelectItem";
 import SelectList from "./src/components/SelectInputs/SelectList/SelectList";
 import activtyConstants from "./src/components/Activity/constants/Activity.constants";
 import ItineraryDay from "./src/components/ItineraryDay/ItineraryDay";
+import InputRow from "./src/components/InputRow/InputRow";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -73,11 +74,27 @@ export default function App() {
 
 
 
-  const { ACTIVITIES } = activtyConstants;
+  const dateOne = {
+    name: 'arrival',
+    label: 'Input label',
+    initialDate: null,
+    helperText: 'helper text',
+    isDisabled: false,
+    isError: false
+  }
+
+  const dateTwo = {
+    name: 'departure',
+    label: 'Input label',
+    initialDate: '04/16/2024',
+    helperText: 'helper text',
+    isDisabled: false,
+    isError: false
+  }
 
   return (
     <View style={styles.container}>
-      <ItineraryDay day={1} date={'Friday, Dec 13th'} activities={ACTIVITIES}/>
+      <InputRow dateOneData={dateOne} dateTwoData={dateTwo} />
     </View>
   );
 }
@@ -87,7 +104,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 50,
     marginHorizontal: 0,
-
     backgroundColor: "#fffff",
     justifyContent: "center",
     alignItems: "center",
