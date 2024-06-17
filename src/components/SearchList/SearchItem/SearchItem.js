@@ -8,6 +8,7 @@ import Pictogram from "../../Pictogram/Pictogram";
  * @prop {string} itemlabel required -> label of item
  * @prop {string} itemSublabel required -> sub-label of item
  * @prop {component} itemIcon required -> icon in item
+ * @prop {function} onSelectItem required -> event to be fired when the item is pressed
  * @returns {ReactElement} Renders a search item.
  *
  * @example
@@ -17,7 +18,7 @@ import Pictogram from "../../Pictogram/Pictogram";
  *  itemIcon={<Placeholder color={theme.color.surface.onBasePrimary} />}
  * />
  */
-const SearchItem = ({ itemLabel, itemSubLabel, itemIcon }) => {
+const SearchItem = ({ itemLabel, itemSubLabel, itemIcon, onSelectItem }) => {
   return (
     <Pressable
       style={({ pressed, focused }) => [
@@ -25,6 +26,7 @@ const SearchItem = ({ itemLabel, itemSubLabel, itemIcon }) => {
         pressed && searchItemStyles.pressedContainer,
         focused && searchItemStyles.focusedContainer,
       ]}
+      onPress={onSelectItem}
     >
       <Pictogram size="sm">{itemIcon}</Pictogram>
       <View>

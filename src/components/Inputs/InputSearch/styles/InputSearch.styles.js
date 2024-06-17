@@ -4,11 +4,11 @@ const { StyleSheet } = require("react-native");
 
 export const inputSearchStyles = StyleSheet.create({
   container: {
-    alignItems: "center",
+    // alignItems: "center",
     marginHorizontal: 16,
     marginTop: 10,
     minWidth: 300,
-    minHeight: 130
+    // minHeight: 130
   },
   inputContainer: {
     ...theme.border.radius.md,
@@ -30,20 +30,35 @@ export const inputSearchStyles = StyleSheet.create({
   input: {
     flex: 1,
     ...theme.typeography.body.md,
-    color: theme.color.surface.onBaseSecondary
+    color: theme.color.surface.onBaseSecondary,
   },
   inputDisabled: {
     color: theme.color.disabled.onBase
+  },
+  listContainer: {
+    padding: theme.spacing.md,
+    gap: theme.spacing.md
   },
   selectionsList: {
     position: "absolute",
     width: "100%",
     maxHeight: 200,
     zIndex: 1,
-    top: "100%",
+    top: "100%"
   },
-  selectionItem: {
-    padding: theme.spacing.sm,
+  emptyTextContainer: {
+    ...theme.border.radius.lg,
+    ...theme.border.width.lg,
+    paddingVertical: theme.spacing.lg,
+    paddingHorizontal: theme.spacing.md,
     gap: theme.spacing.sm,
+    borderStyle: 'dashed',
+    borderColor: theme.color.surface.line,
+  },
+  emptyText: {
+    ...theme.typeography.body.md,
+    color: theme.color.surface.onBaseSecondary,
+    textAlign: 'center',
+    textTransform: 'capitalize'
   }
 });
