@@ -65,6 +65,7 @@ import SearchList from "./src/components/SearchList/SearchList";
 import UserInput from "./src/components/UserInput/UserInput";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import TestScreen from "./src/screens/TestScreen";
+import TestSecondScreen from "./src/screens/TestSecondScreen";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -84,7 +85,8 @@ export default function App() {
       sceneContainerStyle={{ backgroundColor: '#fffff' }}
        tabBar={(props) => <Navbar type={'userInput'} pageTitle={'Input Title'} {...props} />}
       >
-        <TopTabs.Screen component={TestScreen} name="UserInputScreen" />
+        {/* <TopTabs.Screen component={TestScreen} name="UserInputScreen" /> */}
+        <TopTabs.Screen component={TestSecondScreen} name="TestScreen" />
       </TopTabs.Navigator>
     )
   }
