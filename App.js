@@ -83,7 +83,7 @@ export default function App() {
     return (
       <TopTabs.Navigator
       sceneContainerStyle={{ backgroundColor: '#fffff' }}
-       tabBar={(props) => <Navbar type={'userInput'} pageTitle={'Input Title'} {...props} />}
+      //  tabBar={(props) => <Navbar type={'userInput'} pageTitle={'Input Title'} {...props} />}
       >
         {/* <TopTabs.Screen component={TestScreen} name="UserInputScreen" /> */}
         <TopTabs.Screen component={TestSecondScreen} name="TestScreen" />

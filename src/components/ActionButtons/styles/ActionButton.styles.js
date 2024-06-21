@@ -3,8 +3,7 @@ import { theme } from "../../../styles/theme";
 
 export const verticalStyles = StyleSheet.create({
   layout: {
-    ...theme.border.width.md,
-    width: 300,
+    borderTopWidth: theme.border.width.md.borderWidth,
     paddingHorizontal: theme.spacing.md,
     paddingTop: theme.spacing.md,
     paddingBottom: theme.spacing.lg,
@@ -13,13 +12,13 @@ export const verticalStyles = StyleSheet.create({
     alignItems: 'center',
     gap: theme.spacing.xs,
     backgroundColor: theme.color.surface.base,
-    borderColor: theme.color.surface.line
+    borderTopColor: theme.color.surface.line
   }
 })
 
 export const horizontalStyles = StyleSheet.create({
   layout: {
-    width: 300,
+    // width: 300,
     flexDirection: 'column',
     alignItems: 'flex-start',
     borderTopWidth: 1,
