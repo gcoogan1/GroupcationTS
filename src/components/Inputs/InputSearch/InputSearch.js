@@ -21,16 +21,18 @@ import { Text } from "react-native";
  * @prop {string} sectionTitle required -> title of search list
  * @prop {string} emptyText required -> text to be shown when the search list is not displayed
  * @prop {boolean} isDisabled optional -> disabled state of the input
+ * @prop {object} styles optional -> optional styles
  * @returns {ReactNode} Renders a select input field.
  * 
  * @example 
  * <InputSearch
     data={mockSuggestions}
+    onSearch={() => console.log("search")}
     sectionTitle={'section title'} 
     emptyText={"Empty State Text"}
    />
  */
-const InputSearch = ({ data, onSearch, sectionTitle, emptyText, isDisabled }) => {
+const InputSearch = ({ data, onSearch, sectionTitle, emptyText, styles, isDisabled }) => {
   const [query, setQuery] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [selections, setSelections] = useState([]);
@@ -72,7 +74,7 @@ const InputSearch = ({ data, onSearch, sectionTitle, emptyText, isDisabled }) =>
   }
 
   return (
-    <View style={inputSearchStyles.container}>
+    <View style={[inputSearchStyles.container, {...styles}]}>
       <View
         style={[
           inputSearchStyles.inputContainer,
