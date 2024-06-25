@@ -36,7 +36,7 @@ export const inputSearchStyles = StyleSheet.create({
     color: theme.color.disabled.onBase
   },
   listContainer: {
-    padding: theme.spacing.md,
+    paddingVertical: theme.spacing.md,
     gap: theme.spacing.md
   },
   selectionsList: {

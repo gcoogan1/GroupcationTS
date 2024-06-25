@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 import FormGroup from "../components/FormGroup/FormGroup";
 import InputText from "../components/Inputs/InputText/InputText"
+import TopBar from "../components/TopBar/TopBar";
 
 const TestSecondScreen = () => {
   const actionButtons = {
@@ -20,19 +21,22 @@ const TestSecondScreen = () => {
       },
     },
   };
+
+  const mockSuggestions = [
+    { itemLabel: 'Paris' },
+    { itemLabel: 'Hong kong'}
+   ];
+
   return (
     <View style={styles.container}>
-      <FormGroup
-        formHeader={"Page header"}
-        formSubHeader={"Page sub-header"}
-        footerButtons={actionButtons}
-        footerLayout={"vertical"}
-        density={'compact'}
-      >
-        <Text>Slot</Text>
-        <Text>Slot</Text>
-        <Text>Slot</Text>
-      </FormGroup>
+      <TopBar 
+        isSearch
+        onButtonPress={() => console.log("here")}
+        searchData={mockSuggestions}
+        onSearch={() => console.log("search")}
+        sectionTitle={'section title'} 
+        emptyText={"Empty State Text"}
+      />
     </View>
   );
 };
