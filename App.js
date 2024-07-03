@@ -20,7 +20,6 @@ import {
 } from "react-native-safe-area-context";
 import { useForm } from "react-hook-form";
 
-
 import Tag from "./src/components/Tag/Tag";
 import DetailedRow from "./src/components/DetailedRow/DetailedRow";
 import Button from "./src/components/Button/Button";
@@ -66,6 +65,15 @@ import UserInput from "./src/components/UserInput/UserInput";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import TestScreen from "./src/screens/TestScreen";
 import TestSecondScreen from "./src/screens/TestSecondScreen";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Explore from "./assets/icons/Explore_Filled.svg";
+import Groups from "./assets/icons/Groups_Filled.svg";
+import Trips from "./assets/icons/Trips_Filled.svg";
+import Inbox from "./assets/icons/Inbox_Filled.svg";
+import Profile from "./assets/icons/Profile_Filled.svg";
+import BottomTab from "./src/components/BottomTab/BottomTab";
+
+
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -77,23 +85,95 @@ export default function App() {
     return null;
   }
 
-  const TopTabs = createMaterialTopTabNavigator()
+  const TopTabs = createMaterialTopTabNavigator();
 
   const TopNavigation = () => {
     return (
       <TopTabs.Navigator
-      sceneContainerStyle={{ backgroundColor: '#fffff' }}
-      //  tabBar={(props) => <Navbar type={'userInput'} pageTitle={'Input Title'} {...props} />}
+        sceneContainerStyle={{ backgroundColor: "#fffff" }}
+        //  tabBar={(props) => <Navbar type={'userInput'} pageTitle={'Input Title'} {...props} />}
       >
         {/* <TopTabs.Screen component={TestScreen} name="UserInputScreen" /> */}
         <TopTabs.Screen component={TestSecondScreen} name="TestScreen" />
       </TopTabs.Navigator>
-    )
-  }
+    );
+  };
+
+  const BottomTabs = createBottomTabNavigator();
+
+  const inActiveColor = theme.color.surface.onBaseSecondary;
+  const activeColor = theme.color.primary.base;
+  const disabledColor = theme.color.disabled.onBase;
+
+  const BottomNavigation = () => {
+    return (
+      <BottomTabs.Navigator
+        sceneContainerStyle={{ backgroundColor: "#fffff" }}
+        tabBar={(props) => <BottomTab {...props} />}
+      >
+        <BottomTabs.Screen
+          component={TestSecondScreen}
+          name="TestSecondScreen"
+          options={{
+            tabBarLabel: "Explore",
+            tabBarIcon: <Explore color={inActiveColor} />,
+            tabBarIconSelected: <Explore color={activeColor} />,
+            tabBarIconDisabled: <Explore color={disabledColor} />,
+            isDisabled: false
+          }}
+        />
+        <BottomTabs.Screen
+          component={TestScreen}
+          name="TestScreen"
+          options={{
+            tabBarLabel: "Groups",
+            tabBarIcon: <Groups color={inActiveColor} />,
+            tabBarIconSelected: <Groups color={activeColor} />,
+            tabBarIconDisabled: <Groups color={disabledColor} />,
+            isDisabled: false
+          }}
+        />
+        <BottomTabs.Screen
+          component={TestScreen}
+          name="TestScreenThree"
+          options={{
+            tabBarLabel: "Trips",
+            tabBarIcon: <Trips color={inActiveColor} />,
+            tabBarIconSelected: <Trips color={activeColor} />,
+            tabBarIconDisabled: <Trips color={disabledColor} />,
+            isDisabled: false
+          }}
+        />
+        <BottomTabs.Screen
+          component={TestScreen}
+          name="TestScreenFour"
+          options={{
+            tabBarLabel: "Inbox",
+            tabBarIcon: <Inbox color={inActiveColor} />,
+            tabBarIconSelected: <Inbox color={activeColor} />,
+            tabBarIconDisabled: <Inbox color={disabledColor} />,
+            isDisabled: false
+          }}
+        />
+        <BottomTabs.Screen
+          component={TestScreen}
+          name="TestScreenFive"
+          options={{
+            tabBarLabel: "Profile",
+            tabBarIcon: <Profile color={inActiveColor} />,
+            tabBarIconSelected: <Profile color={activeColor} />,
+            tabBarIconDisabled: <Profile color={disabledColor} />,
+            isDisabled: false
+          }}
+        />
+      </BottomTabs.Navigator>
+    );
+  };
 
   return (
     <NavigationContainer>
-        <TopNavigation />
+      {/* <TopNavigation /> */}
+      <BottomNavigation />
     </NavigationContainer>
   );
 }
