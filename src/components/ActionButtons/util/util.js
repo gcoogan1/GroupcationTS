@@ -4,16 +4,16 @@ const REQUIRED_BUTTON_PROPERTIES = ["label", "onPress"];
 
 const verifyButtonGroup = (btnsGroup, requiredKeys) => {
   const groupKeys = Object.keys(btnsGroup);
-  const keysExist = requiredKeys.every((key) => groupKeys.includes(key));
-  const buttonsVerified = !!keysExist && verifyButtonProperties(keysExist);
+  const keysExist = requiredKeys.some((key) => groupKeys.includes(key));
+  const buttonsVerified =
+    keysExist &&
+    Object.values(btnsGroup).every((button) => verifyButtonProperties(button));
   return buttonsVerified;
 };
 
-const verifyButtonProperties = (obj) => {
-  return Object.values(obj).every((nestedObj) =>
-    REQUIRED_BUTTON_PROPERTIES.every(
-      (requiredProperty) => requiredProperty in nestedObj
-    )
+const verifyButtonProperties = (button) => {
+  return REQUIRED_BUTTON_PROPERTIES.every(
+    (requiredProperty) => requiredProperty in button
   );
 };
 
