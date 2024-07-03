@@ -133,39 +133,6 @@ export default function App() {
             isDisabled: false
           }}
         />
-        <BottomTabs.Screen
-          component={TestScreen}
-          name="TestScreenThree"
-          options={{
-            tabBarLabel: "Trips",
-            tabBarIcon: <Trips color={inActiveColor} />,
-            tabBarIconSelected: <Trips color={activeColor} />,
-            tabBarIconDisabled: <Trips color={disabledColor} />,
-            isDisabled: false
-          }}
-        />
-        <BottomTabs.Screen
-          component={TestScreen}
-          name="TestScreenFour"
-          options={{
-            tabBarLabel: "Inbox",
-            tabBarIcon: <Inbox color={inActiveColor} />,
-            tabBarIconSelected: <Inbox color={activeColor} />,
-            tabBarIconDisabled: <Inbox color={disabledColor} />,
-            isDisabled: false
-          }}
-        />
-        <BottomTabs.Screen
-          component={TestScreen}
-          name="TestScreenFive"
-          options={{
-            tabBarLabel: "Profile",
-            tabBarIcon: <Profile color={inActiveColor} />,
-            tabBarIconSelected: <Profile color={activeColor} />,
-            tabBarIconDisabled: <Profile color={disabledColor} />,
-            isDisabled: false
-          }}
-        />
       </BottomTabs.Navigator>
     );
   };
