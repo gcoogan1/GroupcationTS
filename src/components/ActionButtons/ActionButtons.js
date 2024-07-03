@@ -1,9 +1,7 @@
 import { View } from "react-native";
 
 import Button from "../Button/Button";
-import {
-  retrieveButtonPropertiesFromGroup,
-} from "./util/util";
+import { retrieveButtonPropertiesFromGroup } from "./util/util";
 import Progress from "../ProgessBar/ProgressBar";
 import Loader from "../Loader/Loader";
 import { horizontalStyles, verticalStyles } from "./styles/ActionButton.styles";
@@ -11,7 +9,8 @@ import { horizontalStyles, verticalStyles } from "./styles/ActionButton.styles";
 /**
  * This component renders a group of action buttons based on layout given.
  * @param {string} layoutStyle required -> vertical or horizontal
- * @param {object} buttonsGroup required -> object must either have a vertical or horizontal nested object with the following properties:
+ * @param {object} buttonsGroup required -> object must either have a vertical or horizontal nested object with the either of the following properties:
+  * @note properties are OPTIONAL (Ex. top and middle can be passed into vertical object without a bottom)
   * @example vertical:  
   * const actionButtons = {
       vertical: {
@@ -52,7 +51,6 @@ import { horizontalStyles, verticalStyles } from "./styles/ActionButton.styles";
   />
  */
 const ActionButtons = ({ layoutStyle, buttonsGroup, progressStep }) => {
-
   const buttonProperties = retrieveButtonPropertiesFromGroup(
     layoutStyle,
     buttonsGroup
@@ -66,26 +64,42 @@ const ActionButtons = ({ layoutStyle, buttonsGroup, progressStep }) => {
     <>
       {layoutStyle === "vertical" ? (
         <View style={verticalStyles.layout}>
-          <Button styles={{ width: '100%'}} buttonType={'default'} onPress={buttonProperties.top.onPress}>
-            {buttonProperties.top.label}
-          </Button>
-          <Button styles={{ width: '100%'}} buttonType={'tonal'} onPress={buttonProperties.middle.onPress}>
-            {buttonProperties.middle.label}
-          </Button>
-          <Button styles={{ width: '100%'}} buttonType={'tertiary'} onPress={buttonProperties.bottom.onPress}>
-            {buttonProperties.bottom.label}
-          </Button>
+          {Object.keys(buttonProperties).map(
+            (key) =>
+              buttonProperties[key] && (
+                <Button
+                  key={key}
+                  styles={{ width: "100%" }}
+                  buttonType={
+                    key === "top"
+                      ? "default"
+                      : key === "middle"
+                      ? "tonal"
+                      : "tertiary"
+                  }
+                  onPress={buttonProperties[key].onPress}
+                >
+                  {buttonProperties[key].label}
+                </Button>
+              )
+          )}
         </View>
       ) : (
         <View style={horizontalStyles.layout}>
           <Progress step={progressStep} />
           <View style={horizontalStyles.buttonsContainer}>
-            <Button buttonType={'tertiary'}  onPress={buttonProperties.left.onPress}>
-              {buttonProperties.left.label}
-            </Button>
-            <Button buttonType={'default'} onPress={buttonProperties.right.onPress}>
-              {buttonProperties.right.label}
-            </Button>
+            {Object.keys(buttonProperties).map(
+              (key) =>
+                buttonProperties[key] && (
+                  <Button
+                    key={key}
+                    buttonType={key === "left" ? "tertiary" : "default"}
+                    onPress={buttonProperties[key].onPress}
+                  >
+                    {buttonProperties[key].label}
+                  </Button>
+                )
+            )}
           </View>
         </View>
       )}
