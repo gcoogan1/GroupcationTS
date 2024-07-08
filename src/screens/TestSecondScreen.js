@@ -4,6 +4,7 @@ import FormGroup from "../components/FormGroup/FormGroup";
 import InputText from "../components/Inputs/InputText/InputText"
 import TopBar from "../components/TopBar/TopBar";
 import Dialog from "../components/Dialog/Dialog";
+import UtilityMessage from "../components/UtilityMessage/styles/UtilityMessage";
 
 const TestSecondScreen = () => {
   const actionButtons = {
@@ -21,11 +22,7 @@ const TestSecondScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Dialog title={"Dialog Title"} subTitle={"Dialog sub-title"} footerButtons={actionButtons}> 
-        <View>
-          <Text style={{ textAlign: 'center' }}>This is a slot!</Text>
-        </View>
-      </Dialog>
+      <UtilityMessage  />
     </View>
   );
 };

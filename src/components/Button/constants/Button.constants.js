@@ -59,8 +59,8 @@ const BUTTON_TYPE_COLORS = {
   },
   tonal: {
     enabled: {
-      borderColor: "rgba(56, 56, 56, .3)",
-      backgroundColor: "rgba(56, 56, 56, .3)",
+      borderColor: "rgba(56, 56, 56, .1)",
+      backgroundColor: "rgba(56, 56, 56, .1)",
     },
     pressed: {
       borderColor: theme.color.surface.onBasePrimary,
