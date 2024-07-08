@@ -1,8 +1,10 @@
+import React, { ReactElement } from "react";
+
 import { theme } from "../../../styles/theme";
 import ButtonConstants from "../constants/Button.constants";
 import Icon from "../../Icon/Icon";
 
-export const getButtonStyle = (type, size, pressed, disabled) => {
+export const getButtonStyle = (type: string, size: string, pressed: boolean, disabled: boolean) => {
   const { BUTTON_TYPE_COLORS, BUTTON_SIZES_STYLE } = ButtonConstants;
 
   const btnColors =
@@ -21,7 +23,7 @@ export const getButtonStyle = (type, size, pressed, disabled) => {
   };
 };
 
-export const getTextStyle = (type, isDisabled) => {
+export const getTextStyle = (type: string, isDisabled: boolean) => {
   if (isDisabled) {
     const whiteText = ButtonConstants.DISABLED_LIGHT_BUTTON_TEXT.includes(type);
     return whiteText
@@ -35,9 +37,9 @@ export const getTextStyle = (type, isDisabled) => {
     : { color: theme.color.primary.onBase };
 };
 
-export const getDisplayIcon = (icon, loading) => {
-  if (!!icon && !loading) {
+export const getDisplayIcon = (icon?: ReactElement, loading?: boolean): React.ReactNode => {
+  if (icon && !loading) {
     return <Icon>{icon}</Icon>;
   }
-  return;
+  return null;
 };

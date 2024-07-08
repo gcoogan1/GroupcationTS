@@ -1,6 +1,29 @@
 import { theme } from "../../../styles/theme";
 
-const BUTTON_TYPE_COLORS = {
+interface ButtonStyle {
+  borderColor: string;
+  backgroundColor: string;
+}
+
+interface ButtonType {
+  enabled: ButtonStyle;
+  pressed: ButtonStyle;
+  disabled: ButtonStyle;
+}
+
+interface ButtonSizes {
+  padding: number;
+}
+
+interface ButtonStyles {
+  [key: string]: ButtonType;
+}
+
+interface ButtonSizeStyles {
+  [key: string]: ButtonSizes;
+}
+
+const BUTTON_TYPE_COLORS: ButtonStyles = {
   primary: {
     enabled: {
       borderColor: theme.color.primary.base,
@@ -64,7 +87,6 @@ const BUTTON_TYPE_COLORS = {
     },
     pressed: {
       borderColor: theme.color.surface.onBasePrimary,
-      // backgroundColor: theme.color.surface.line,
       backgroundColor: "rgba(56, 56, 56, .5)"
     },
     disabled: {
@@ -116,10 +138,7 @@ const BUTTON_TYPE_COLORS = {
   },
 };
 
-const DARK_BUTTON_TEXT = ["default-inverse", "secondary", "tonal", "tertiary"];
-const DISABLED_LIGHT_BUTTON_TEXT = ["primary", "default"];
-
-const BUTTON_SIZES_STYLE = {
+const BUTTON_SIZES_STYLE: ButtonSizeStyles = {
   md: {
     padding: theme.spacing.md,
   },
@@ -128,9 +147,14 @@ const BUTTON_SIZES_STYLE = {
   },
 };
 
-export default {
+const DARK_BUTTON_TEXT: string[] = ["default-inverse", "secondary", "tonal", "tertiary"];
+const DISABLED_LIGHT_BUTTON_TEXT: string[] = ["primary", "default"];
+
+const buttonStyles = {
   BUTTON_TYPE_COLORS,
   DARK_BUTTON_TEXT,
   BUTTON_SIZES_STYLE,
   DISABLED_LIGHT_BUTTON_TEXT,
 };
+
+export default buttonStyles;

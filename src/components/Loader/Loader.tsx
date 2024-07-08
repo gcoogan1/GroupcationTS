@@ -1,12 +1,19 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Animated, Easing } from "react-native";
 
+import { theme } from "../../styles/theme";
 import SmEllipse from "../../../assets/loader/SmEllipse.svg";
 import MdEllipse from "../../../assets/loader/MdEllipse.svg";
 import LgEllipse from "../../../assets/loader/LgEllipse.svg";
 import XLEllipse from "../../../assets/loader/XLEllipse.svg";
 import DoubleXLEllipse from "../../../assets/loader/DoubleXLEllipse.svg";
-import { theme } from "../../styles/theme";
+
+type LoaderSize = "sm" | "lg" | "xl" | "2x" | "default";
+
+interface LoaderProps {
+  size?: LoaderSize;
+  color?: string;
+}
 
 /**
  * This component renders a loading spinner based on size (defaults to a md size).
@@ -14,7 +21,7 @@ import { theme } from "../../styles/theme";
  * @param {string} color optional -> changes color of loader
  * @returns {ReactNode} Renders a loader.
  */
-const Loader = ({ size, color }) => {
+const Loader: React.FC<LoaderProps> = ({ size = "default", color }) => {
   const spinValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -48,7 +55,6 @@ const Loader = ({ size, color }) => {
 
   return (
     <Animated.View style={{ transform: [{ rotate: spin }] }}>
-      {/* <Spinner color="white" /> */}
       <LoaderImage />
     </Animated.View>
   );

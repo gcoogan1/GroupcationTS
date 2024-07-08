@@ -1,8 +1,23 @@
-import { Pressable, Text } from "react-native";
+import { Pressable, Text, TextStyle, ViewStyle } from "react-native";
 
 import { defaultButtonStyles } from "./styles/Button.styles";
 import Loader from "../Loader/Loader";
 import { getButtonStyle, getTextStyle, getDisplayIcon } from "./util/util";
+import { ReactElement } from "react";
+import React from "react";
+
+interface ButtonProps {
+  children: React.ReactNode;
+  onPress: () => void;
+  buttonType?: string; // Adjust to specific button types if necessary
+  buttonSize?: "sm" | "md"; // Specify allowed button sizes
+  isDisabled?: boolean;
+  isLoading?: boolean;
+  iconRight?: ReactElement<any, string | React.JSXElementConstructor<any>>;
+  iconLeft?: ReactElement<any, string | React.JSXElementConstructor<any>>;
+  styles?: ViewStyle;
+  textStyle?: TextStyle;
+}
 
 /**
  * This component renders a button based on type and size.
@@ -32,27 +47,27 @@ import { getButtonStyle, getTextStyle, getDisplayIcon } from "./util/util";
  * </Button>
  */
 
-const Button = ({
+const Button: React.FC<ButtonProps> = ({
   children,
   onPress,
-  buttonType,
-  buttonSize,
-  isDisabled,
-  isLoading,
+  buttonType = "default", // Default to "default" type if not provided
+  buttonSize = "md", // Default to "md" size if not provided
+  isDisabled = false,
+  isLoading = false,
   iconRight,
   iconLeft,
   styles,
   textStyle,
-}) => {
+}) =>{
   const typeTextStyle = getTextStyle(buttonType, isDisabled);
 
   return (
     <Pressable
-      style={({ pressed, focused }) => [
+      style={({ pressed }) => [
         defaultButtonStyles.button,
         getButtonStyle(buttonType, buttonSize, pressed, isDisabled),
         { ...styles },
-        focused && defaultButtonStyles.focused,
+        // focused && defaultButtonStyles.focused, // NO STATE FOR FOCUSED IN TS
       ]}
       disabled={isDisabled}
       onPress={onPress}

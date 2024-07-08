@@ -10,9 +10,9 @@ export const defaultButtonStyles = StyleSheet.create({
     flexDirection: 'row',
     gap: theme.spacing.xs,
   },
-  focused: {
-    borderColor: theme.color.focus.line
-  },
+  // focused: {
+  //   borderColor: theme.color.focus.line
+  // },
   text: {
     ...theme.typeography.body.mdBold
   }
