@@ -26,6 +26,16 @@ import { formatInputDate } from "../../../util/helperFunctions/helperFunctions";
  * @returns {ReactElement} Renders a user input.
  *
  * @example
+ * const ITEMS_SELECT = [
+    { itemLabel: "item label", itemValue: "1", isDisabled: false },
+    { itemLabel: "item label", itemValue: "2", isDisabled: false },
+    { itemLabel: "item label", itemValue: "3", isDisabled: false }
+   ];
+ * <UserInput
+    type={"select"}
+    selectList={ITEMS_SELECT}
+    selectType={"select"}
+    >
  */
 const UserInput = ({
   type,
